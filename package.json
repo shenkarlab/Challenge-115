@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shenkarlab/Challenge-115/issues"
   },
-  "homepage": "https://github.com/shenkarlab/Challenge-115#readme"
+  "homepage": "https://github.com/shenkarlab/Challenge-115#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
