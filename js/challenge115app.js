@@ -1,8 +1,8 @@
 // app.js
 var app = angular.module('app', ['ui.router']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
-
+app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
         
     $stateProvider
@@ -20,7 +20,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
         .state('supermarket', {
             url: '/supermarket',
-            templateUrl: 'partials/partial-supermarket.html'      
+            templateUrl: 'partials/partial-supermarket.html',
+            controller : 'superController'
         })
         
         .state('statistics', {
@@ -31,8 +32,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
 app.controller('mainController',function($scope){
     $scope.hello = "hello";
+    $scope.cart = {};
 })
 
 .controller('home',['$scope',function($scope){
-
+    
 }]);
