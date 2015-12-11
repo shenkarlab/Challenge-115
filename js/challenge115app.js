@@ -4,7 +4,11 @@ var app = angular.module('app', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 894f1bbe4c7f7a541689dbb12e81cc6f96f0320a
     $stateProvider
 
         .state('home', {
@@ -15,7 +19,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('info', {
             url: '/info',
             templateUrl: 'partials/partial-info.html',
-            controller : 'homeController'
+            controller : 'infoController'
         })
 
         .state('supermarket', {
@@ -25,6 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
         .state('statistics', {
             url: '/statistics',
+<<<<<<< HEAD
             templateUrl: 'partials/partial-statistics.html'
         })
 
@@ -36,4 +41,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .controller('home',['$scope',function($scope){
 
         }]);
+=======
+            templateUrl: 'partials/partial-statistics.html'      
+        });
+>>>>>>> 894f1bbe4c7f7a541689dbb12e81cc6f96f0320a
 });
+        
+app.controller('mainController',function($scope){
+    $scope.hello = "hello";
+})
+
+.controller('home',['$scope',function($scope){
+
+}]);
