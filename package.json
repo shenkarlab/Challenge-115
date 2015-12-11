@@ -1,0 +1,19 @@
+{
+  "name": "115challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dudilugasi@github.com/shenkarlab/Challenge-115.git"
+  },
+  "author": "dudi and livne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shenkarlab/Challenge-115/issues"
+  },
+  "homepage": "https://github.com/shenkarlab/Challenge-115#readme"
+}
