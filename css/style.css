@@ -24,3 +24,22 @@
     float:right;
     display: inline-block;
 }
+.maritals {
+    margin:0px auto;
+}
+.marital {
+    float:right;
+    display: inline-block;
+    margin-right: 40px;
+}
+.marital label {
+    margin:0px !important;
+    display:block;
+    position:relative;
+}
+.marital-type {
+    width:70px;
+    height:100px;
+    display:block;
+    border:1px solid;
+}

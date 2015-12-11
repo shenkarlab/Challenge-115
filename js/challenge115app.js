@@ -32,6 +32,7 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
 
 app.controller('mainController',function($scope){
     $scope.hello = "hello";
+    $scope.user = {};
     //$scope.user;
 })
 

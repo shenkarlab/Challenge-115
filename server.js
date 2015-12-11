@@ -11,4 +11,4 @@ app.all('/*', function(req, res, next) {
     res.sendFile(__dirname  + '/index.html');
 });
 app.listen(8000);
-console.log('server listening on port 8000');
+console.log('server listening on port 8000 ...');
