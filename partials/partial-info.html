@@ -1,1 +1,28 @@
-<h1>info</h1>
+<div class="reg_form">
+    <!-- Select City -->
+    <div class="input_row">
+        <label>בחר עיר</label>
+        <select class="form-control0" ng-model="user.city">
+            <option>תל אביב</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <!-- select Age -->
+    <div class="input_row">
+        <label>בחר גיל</label>
+        <input type="number" ng-model="user.age" min="1" max="5">
+    </div>
+    <!-- select gender -->
+    <div class="input_row">
+        <input class="gender_check" type="checkbox" name="vehicle" value="Bike">גבר
+        <input type="checkbox" name="vehicle" value="Car" checked>אישה
+    </div>
+    <div class="input_row">
+        <input type="submit" ng-click="registerForm()" value="המשך">
+    </div>
+{{hello}}
+
+</div>

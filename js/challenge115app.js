@@ -4,11 +4,7 @@ var app = angular.module('app', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 894f1bbe4c7f7a541689dbb12e81cc6f96f0320a
     $stateProvider
 
         .state('home', {
@@ -29,28 +25,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
         .state('statistics', {
             url: '/statistics',
-<<<<<<< HEAD
             templateUrl: 'partials/partial-statistics.html'
         })
-
-
-        .controller('mainController',function($scope){
-            $scope.hello = "hello";
-        })
-
-        .controller('home',['$scope',function($scope){
-
-        }]);
-=======
-            templateUrl: 'partials/partial-statistics.html'      
-        });
->>>>>>> 894f1bbe4c7f7a541689dbb12e81cc6f96f0320a
 });
-        
+
 app.controller('mainController',function($scope){
     $scope.hello = "hello";
+    //$scope.user;
 })
 
-.controller('home',['$scope',function($scope){
+    .controller('home',['$scope',function($scope){
 
-}]);
+    }]);
