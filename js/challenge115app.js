@@ -3,17 +3,36 @@ var app = angular.module('app', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
     
     $stateProvider
         
         .state('home', {
-            url: '/home',
-            templateUrl: 'partial-home.html'
+            url: '/',
+            templateUrl: 'partials/partial-home.html'
         })
         
-        .state('about', {
-            // we'll get to this in a bit       
-        });
+        .state('info', {
+            url: '/info',
+            templateUrl: 'partials/partial-info.html',
+            controller : 'homeController'
+        })
         
+        .state('supermarket', {
+            url: '/supermarket',
+            templateUrl: 'partials/partial-supermarket.html'      
+        })
+        
+        .state('statistics', {
+            url: '/statistics',
+            templateUrl: 'partials/partial-statistics.html'      
+        })
+        
+        .controller('mainController',function($scope){
+            $scope.hello = "hello";
+        })
+        
+        .controller('home',['$scope',function($scope){
+            
+        }]);
 });
