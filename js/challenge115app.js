@@ -38,6 +38,7 @@ app.controller('mainController',function($scope){
         "total" : 0,
         "failed" : false
     };
+    $scope.user = {};
     //$scope.user;
 })
 

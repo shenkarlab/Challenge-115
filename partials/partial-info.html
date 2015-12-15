@@ -3,26 +3,45 @@
     <div class="input_row">
         <label>בחר עיר</label>
         <select class="form-control0" ng-model="user.city">
-            <option>תל אביב</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option selected="selected">תל אביב</option>
+            <option>חיפה</option>
+            <option>עכו</option>
+            <option>ראשון לציון</option>
+            <option>רעננה</option>
         </select>
     </div>
     <!-- select Age -->
     <div class="input_row">
         <label>בחר גיל</label>
-        <input type="number" ng-model="user.age" min="1" max="5">
+        <input type="number" ng-model="user.age" min="1" max="100">
     </div>
     <!-- select gender -->
     <div class="input_row">
-        <input class="gender_check" type="checkbox" name="vehicle" value="Bike">גבר
-        <input type="checkbox" name="vehicle" value="Car" checked>אישה
+        <input  type="checkbox" value="גבר">גבר
+        <input  type="checkbox" value="אישה" >אישה
     </div>
+    <!-- Marital Status Blocks -->
+    <div class="input_row maritals">
+        <div class="marital">
+            <div class="marital-type" ng-click="setMarital('רווק')"></div>
+            <label>רווק</label>
+        </div>
+        <div class="marital">
+            <div class="marital-type" ng-click="setMarital('נשוי')"></div>
+            <label>נשוי</label>
+        </div>
+        <div class="marital">
+            <div class="marital-type" ng-click="setMarital('גרוש')"></div>
+            <label>גרוש</label>
+        </div>
+    </div>
+    <!-- Number Of Children -->
+    <div class="input_row">
+        <label>מספר ילדים</label>
+        <input type="number" ng-model="user.children" min="1" max="5">
+    </div>
+
     <div class="input_row">
         <input type="submit" ng-click="registerForm()" value="המשך">
     </div>
-{{hello}}
-
 </div>
