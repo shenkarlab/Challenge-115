@@ -24,3 +24,95 @@
     float:right;
     display: inline-block;
 }
+
+
+
+
+/**
+* partial-supermarket
+*/
+
+
+#super {
+    overflow-x: scroll;
+}
+#super .inner {
+    width: 9833px;
+    position: relative;
+}
+#super .isle {
+    border: 1px solid #000;
+    margin: 5px;
+    
+    width: 1105px;
+    display: inline-block;
+    height: 439px;
+    vertical-align: top;
+}
+#super .product {
+    width: 100px;
+    height: 100px;
+    background-color: #e7e7e7;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+
+footer .isle-page{
+    display: inline-block;
+    margin: 5px;
+}
+
+footer .isle-page a.active {
+    color: red;
+}
+
+#person {
+    width: 90px;
+    height: 230px;
+    background-color: #fff;
+    border: 1px solid #000;
+    display: inline-block;
+}
+#cart {
+    width: 100px;
+    height: 80px;
+    background-color: #fff;
+    border: 1px solid #000;
+    display: inline-block;
+    position: relative;
+}
+#cart p {
+    position: absolute;
+    width: 100%;
+}
+.person-container {
+    text-align: center;
+    margin-top: -106px;
+    position: relative;
+    z-index: 1;
+}
+
+div#checkout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+}
+div#summery {
+    border: 1px solid;
+    background-color: #fff;
+    width: 200px;
+    text-align: center;
+}
+
+.strike.strike-out {
+    background-color: #ABABAB;
+}
+.strike {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    display: inline-block;
+}
