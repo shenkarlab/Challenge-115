@@ -2,7 +2,7 @@
     <!-- Select City -->
     <div class="input_row">
         <label>בחר עיר</label>
-        <select class="form-control0" ng-model="user.city">
+        <select  class="form-control0 city" ng-model="user.city">
             <option selected="selected">תל אביב</option>
             <option>חיפה</option>
             <option>עכו</option>
@@ -13,7 +13,12 @@
     <!-- select Age -->
     <div class="input_row">
         <label>בחר גיל</label>
-        <input type="number" ng-model="user.age" min="1" max="100">
+        <!-- <input type="number" ng-model="user.age" min="1" max="100"> -->
+        <div class="input_row age_row">
+            <p ng-click="decrement()" class="active_num">-</p>
+            <input type="number" ng-model="user.age" min="1" max="100">
+            <p ng-click="increment()" class="active_num">+</p>
+        </div>
     </div>
     <!-- select gender -->
     <div class="input_row">

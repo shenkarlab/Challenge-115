@@ -43,3 +43,23 @@
     display:block;
     border:1px solid;
 }
+.city {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.age_row {
+    margin-right: 60px;
+}
+.age_row input {
+    float:left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.active_num {
+    margin-top: 0px;
+    cursor: pointer;
+    float:left;
+    display:inline-block;
+}

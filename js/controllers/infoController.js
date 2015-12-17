@@ -1,5 +1,6 @@
 angular.module('app').controller('infoController',['$scope', function($scope) {
     $scope.greeting = 'Hola!';
+    $scope.user.age = 25;
 
 
     /*
@@ -19,6 +20,22 @@ angular.module('app').controller('infoController',['$scope', function($scope) {
     $scope.setMarital = function(income_marital) {
         $scope.user.marital = income_marital;
         console.log(income_marital);
+    }
+
+    /*
+    * Increment The Aage Parameter
+     */
+    $scope.increment = function() {
+        $scope.user.age ++;
+        console.log('age: ' + $scope.user.age);
+    }
+
+    /*
+     * Decrement The Aage Parameter
+     */
+    $scope.decrement = function() {
+        $scope.user.age --;
+        console.log('age: ' + $scope.user.age);
     }
 
     /*
