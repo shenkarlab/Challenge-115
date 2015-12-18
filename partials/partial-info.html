@@ -1,18 +1,18 @@
 <div class="reg_form">
     <!-- Select City -->
-    <div class="input_row">
-        <label>בחר עיר</label>
-        <select  class="form-control0 city" ng-model="user.city">
-            <option selected="selected">תל אביב</option>
-            <option>חיפה</option>
-            <option>עכו</option>
-            <option>ראשון לציון</option>
-            <option>רעננה</option>
+    <div class="input_row city">
+        <label>בחר/י עיר</label>
+        <select class="form-control0" ng-model="user.city">
+            <option class="lt" selected="selected">תל אביב</option>
+            <option class="lt">חיפה</option>
+            <option class="lt">עכו</option>
+            <option class="lt">ראשון לציון</option>
+            <option class="lt">רעננה</option>
         </select>
     </div>
     <!-- select Age -->
-    <div class="input_row">
-        <label>בחר גיל</label>
+    <div class="input_row age_div">
+        <label>גיל</label>
         <!-- <input type="number" ng-model="user.age" min="1" max="100"> -->
         <div class="input_row age_row">
             <p ng-click="decrement()" class="active_num">-</p>
@@ -22,8 +22,8 @@
     </div>
     <!-- select gender -->
     <div class="input_row">
-        <input  type="checkbox" value="גבר">גבר
-        <input  type="checkbox" value="אישה" >אישה
+        גבר<input  type="checkbox" value="גבר">
+        אישה<input  type="checkbox" value="אישה" >
     </div>
     <!-- Marital Status Blocks -->
     <div class="input_row maritals">
@@ -43,10 +43,16 @@
     <!-- Number Of Children -->
     <div class="input_row">
         <label>מספר ילדים</label>
-        <input type="number" ng-model="user.children" min="1" max="5">
+        <div class="input_row range_row">
+            <input type="range" min="0" max="10" ng-model="user.children">
+            <p>{{user.children}}</p>
+        </div>
+
     </div>
 
     <div class="input_row">
-        <input type="submit" ng-click="registerForm()" value="המשך">
+        <div ng-click="registerForm()" class="send_btn">
+            <p>המשך</p>
+        </div>
     </div>
 </div>

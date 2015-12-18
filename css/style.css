@@ -8,17 +8,20 @@
     height:450px;
     border:1px solid;
     position:relative;
+    font-family: sans-serif;
 }
 .reg_form label, select {
-    text-align: center;
-    margin-right: 60px;
     display: block;
+    text-align: right;
+    font-size: small;
 }
 .input_row {
-    float:right;
     display: block;
     clear: both;
     position:relative;
+    margin: 0 auto;
+    text-align: center;
+    display: table;
     margin-bottom: 20px;
 }
 .gender_check {
@@ -27,6 +30,8 @@
 }
 .maritals {
     margin:0px auto;
+    margin-bottom: 20px;
+    display: table;
 }
 .marital {
     float:right;
@@ -37,14 +42,85 @@
     margin:0px !important;
     display:block;
     position:relative;
+    text-align: center;
 }
 .marital-type {
-    width:70px;
+    width: 90px;
     height:100px;
     display:block;
     border:1px solid;
+}
+.marital {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    margin-top: 5px;
+}
 
-
+select {
+    text-align: center !important;
+}
+select .lt {
+    text-align:center !important;
+}
+.age_div label {
+    display: inline-block;
+    margin-top: 10px;
+    float: right;
+}
+.age_row {
+    clear:none;
+    margin-bottom: 0px;
+    height: 40px;
+    display: inline;
+    float: right;
+}
+.age_row .number_p {
+    float:left;
+    display:inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.age_row input {
+    float:left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.active_num {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    float:left;
+    font-size: 30px;
+    font-weight: bold;
+}
+.plus_num {
+    margin-top: 2px;
+}
+.range_row {
+    margin-right: 0px;
+}
+.range_row p{
+    display: inline-block;
+    font-weight: 700;
+    font-size: x-large;
+    margin-left: 3px;
+    margin-top: 0px;
+}
+.city select {
+    width: 150px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.city label {
+    margin-bottom: 10px;
+}
 
 
 /**
@@ -135,14 +211,8 @@ div#summery {
     border: 1px solid #000;
     display: inline-block;
 }
-.city {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-}
 .age_row {
-    margin-right: 60px;
+    margin-right: 20px;
 }
 .age_row .number_p {
     float:left;
@@ -168,4 +238,25 @@ div#summery {
 }
 .plus_num {
     margin-top: 2px;
+}
+.send_btn {
+    background: grey;
+    width: 70px;
+    height: 30px;
+    display: table;
+}
+.send_btn:hover {
+    background: black;
+    transition: 0.8s ease;
+}
+
+.send_btn p {
+    color: white;
+    margin:0 auto;
+    display:block;
+    margin: 0px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 600;
+    cursor:pointer;
 }

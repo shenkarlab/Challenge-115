@@ -1,6 +1,7 @@
 angular.module('app').controller('infoController',['$scope', function($scope) {
     $scope.greeting = 'Hola!';
     $scope.user.age = 25;
+    $scope.user.children = 0;
 
 
     /*
@@ -27,7 +28,6 @@ angular.module('app').controller('infoController',['$scope', function($scope) {
      */
     $scope.increment = function() {
         $scope.user.age ++;
-        console.log('age: ' + $scope.user.age);
     }
 
     /*
@@ -35,7 +35,6 @@ angular.module('app').controller('infoController',['$scope', function($scope) {
      */
     $scope.decrement = function() {
         $scope.user.age --;
-        console.log('age: ' + $scope.user.age);
     }
 
     /*
