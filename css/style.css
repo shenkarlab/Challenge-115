@@ -3,6 +3,7 @@
 */
 .reg_form {
     margin:0px auto;
+    margin-top: 50px;
     width:50%;
     height:450px;
     border:1px solid;
@@ -58,6 +59,8 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 0px;
+    font-size: 30px;
+    font-weight: bold;
 }
 .age_row input {
     float:left;
@@ -69,4 +72,9 @@
     margin-bottom: 0px;
     cursor: pointer;
     float:left;
+    font-size: 30px;
+    font-weight: bold;
+}
+.plus_num {
+    margin-top: 2px;
 }
