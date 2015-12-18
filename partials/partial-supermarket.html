@@ -1,25 +1,51 @@
-<main id="super">
-    <div class="isle" ng-repeat="isle in categories">
-        <div class="product" ng-repeat="product in isle.items">
 
+<main id="super">
+    <div class='inner' data-spy="scroll" data-target="#isles-pages">
+        <div class="isle" id="isle-{{$index}}" ng-repeat="isle in isles">
+            <div class="product" ng-repeat="product in isle.items" ng-click="addItem($parent.$index, $index)">
+                {{product.name}}</div>
         </div>
     </div>
 </main>
-{{super}}
+
 <footer>
-    <div id="person">
+    <div class='person-container'>
+        <div id="person"></div>
+        <div id="cart"><p>{{cart.items.length}}</p></div>
     </div>
-    <div id="cart">
-    </div>
-    <div id="strikes">
-        <div class="strike"></div>
-        <div class="strike"></div>
-        <div class="strike"></div>
+    <div class="strikes">
+        <div class="strike" ng-class="{'strike-out' : strikes >= 1}"></div>
+        <div class="strike" ng-class="{'strike-out' : strikes >= 2}"></div>
+        <div class="strike" ng-class="{'strike-out' : strikes >= 3}"></div>
     </div>
     <div id="isles-pages">
-        <div class="isle-page" ng-repeat="isle in categories">
-            
+        <div class="isle-page" ng-repeat="isle in isles"><a data-href="#isle-{{$index}}">{{isle._id}}</a></div>
+    </div>
+    <a href="" ng-click='goToRegister()'>גש לקופה</a>
+
+</footer>
+
+<div id='checkout' ng-show='finished'>
+    <div>
+
+    </div>
+    <div id='summery'>
+        <h1>אתגר ה115</h1>
+        <h2 ng-if='cart.failed'>נכשל</h2>
+        <h2 ng-if='!cart.failed'>עובר</h2>
+        <label>רכשת מוצרים בסך :</label>
+        <label>{{cart.total| currency : ""}} <span>ש״ח</span></label>
+        <label ng-if='cart.failed'>חרגת מהתקציב ב:</label>
+        <label ng-if='!cart.failed'>נותר לך בתקציב: </label>
+        <label>{{diff| currency : ""}}<span>ש״ח</span></label>
+        <div class="strikes">
+            <div class="strike" ng-class="{'strike-out' : strikes >= 1}"></div>
+            <div class="strike" ng-class="{'strike-out' : strikes >= 2}"></div>
+            <div class="strike" ng-class="{'strike-out' : strikes >= 3}"></div>
+        </div>
+        <div class='buttons'>
+            <button ng-if="cart.failed && strikes < 3" ng-click="tryAgain()">ניסיון נוסף</button>
+            <button><a href='statistics'>סיום</a></button>
         </div>
     </div>
-    <a href="">גש לקופה</a>
-</footer>
+</div>

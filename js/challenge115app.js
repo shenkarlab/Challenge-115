@@ -32,6 +32,12 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
 
 app.controller('mainController',function($scope){
     $scope.hello = "hello";
+    $scope.cart = {
+        "user" : $scope.user,
+        "items" : [],
+        "total" : 0,
+        "failed" : false
+    };
     $scope.user = {};
     //$scope.user;
 })
