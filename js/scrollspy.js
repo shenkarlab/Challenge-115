@@ -5,14 +5,14 @@ jQuery(document).ready(function($){
             return $(obj).offset().left;
         });
         for (var i = 0 ; i < offsets.length ; i++ ) {
-            if (offsets[i] >= 14) {
+            if (offsets[i] >= 100) {
                 break;
             }
-        }        
+        }
         var id = (i === 0) ? "isle-0" : $(isles[i - 1]).attr("id");
-        $(".isle-page a").removeClass("active");
+        $(".isle-page").removeClass("active");
         var selector = ".isle-page a[data-href='#" + id + "']";
-        $(selector).addClass("active");
+        $(selector).closest(".isle-page").addClass("active");
     };
    
 });

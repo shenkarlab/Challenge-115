@@ -1,5 +1,11 @@
-<h1>קיבלת הודעה חדשה!</h1>
-<h2>מאת : {{message.sender}}</h2>
-<p>{{message.content}}</p>
-<button><a href="javascript:parent.$.fancybox.close();">התעלם</a></button>
-<button ng-click="messageAddedItem(message.item)"><a href="javascript:parent.$.fancybox.close();">הוסף לסל הקניות</a></button>
+<div class="popup">
+    <h1>קיבלת הודעה חדשה</h1>
+    <div class="popup-body">
+        <div>
+            <h2>מאת : {{message.sender}}</h2>
+            <p>{{message.content}}</p>
+        </div>
+    </div>
+    <a class="button" href="javascript:parent.$.fancybox.close();">התעלם</a>
+    <a ng-click="messageAddedItem(message.item)" class="button" href="javascript:parent.$.fancybox.close();">הוסף לסל הקניות</a>
+</div>

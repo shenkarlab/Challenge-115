@@ -13,7 +13,7 @@ app.controller('superController', ['$scope', '$http', '$compile', function ($sco
         $scope.message = {
             trial_message: "על מה שאישה ביקשה",
             sender: 'האישה',
-            content: "היי אתה שחכתי לרשום חלב, אתה יכול לקנות?",
+            content: "היי  שחכתי לרשום חלב, אתה יכול לקנות?",
             item: 48
         };
 
@@ -79,14 +79,12 @@ app.controller('superController', ['$scope', '$http', '$compile', function ($sco
 
         $scope.messageAddedItem = function (id) {
             var item = getItemById(id);
-            var gift_item = getItemById(item.offer.gift);
-            gift_item.gift = 1;
-            gift_item.price = 0;
-            item.removeGift = item.offer.gift;
             pushItem(item);
-            pushItem(gift_item);
-            console.log($scope.cart);
         };
+        
+        $scope.offerAddedItem = function (id) {
+
+        }
 
         $scope.goToRegister = function () {
             $scope.finished = true;
@@ -103,6 +101,12 @@ app.controller('superController', ['$scope', '$http', '$compile', function ($sco
 
         $scope.tryAgain = function () {
             $scope.finished = false;
+        };
+        
+        $scope.openCart = function() {
+            if (!$scope.finished) {
+                $scope.openFancyBox('partials/template-cart.html');
+            }
         };
         
         $(document).on("click", ".isle-page", function (event) {

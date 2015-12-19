@@ -3,49 +3,61 @@
     <div class='inner' data-spy="scroll" data-target="#isles-pages">
         <div class="isle" id="isle-{{$index}}" ng-repeat="isle in isles">
             <div class="product" ng-repeat="product in isle.items" ng-click="addItem($parent.$index, $index)">
-                {{product.name}}</div>
+                <div><span>{{product.name}}</span></div>
+            </div>
         </div>
     </div>
 </main>
 
-<footer>
+<footer id="supermarket-footer">
     <div class='person-container'>
-        <div id="person"></div>
-        <div id="cart"><p>{{cart.items.length}}</p></div>
+        <div id="person" class="placeholder"></div>
+        <div id="cart" class="placeholder" ng-click="openCart()">
+            <span>עגלת הקניות שלי</span>
+            <p>{{cart.items.length}}</p>
+        </div>
     </div>
     <div class="strikes">
-        <div class="strike" ng-class="{'strike-out' : strikes >= 1}"></div>
-        <div class="strike" ng-class="{'strike-out' : strikes >= 2}"></div>
-        <div class="strike" ng-class="{'strike-out' : strikes >= 3}"></div>
+        <div class="strike placeholder" ng-class="{'strike-out' : strikes >= 1}"></div>
+        <div class="strike placeholder" ng-class="{'strike-out' : strikes >= 2}"></div>
+        <div class="strike placeholder" ng-class="{'strike-out' : strikes >= 3}"></div>
     </div>
-    <div id="isles-pages">
-        <div class="isle-page" ng-repeat="isle in isles"><a data-href="#isle-{{$index}}">{{isle._id}}</a></div>
+    <div id="isles-pages-container">
+        <div id="isles-pages">
+            <div class="isle-page placeholder" ng-repeat="isle in isles"><a data-href="#isle-{{$index}}"></a></div>
+        </div>
+        <div id="go-to-register-container">
+            <a href="" ng-click='goToRegister()'>גש לקופה</a>
+        </div>
     </div>
-    <a href="" ng-click='goToRegister()'>גש לקופה</a>
 
 </footer>
 
 <div id='checkout' ng-show='finished'>
     <div>
-
+        <div id="register">
+            <div id="cashier" class="placeholder"></div>
+        </div>         
     </div>
     <div id='summery'>
         <h1>אתגר ה115</h1>
         <h2 ng-if='cart.failed'>נכשל</h2>
         <h2 ng-if='!cart.failed'>עובר</h2>
         <label>רכשת מוצרים בסך :</label>
-        <label>{{cart.total| currency : ""}} <span>ש״ח</span></label>
+        <label class="amount-row"><span class="amount">{{cart.total| currency : ""}} </span><span>ש״ח</span></label>
         <label ng-if='cart.failed'>חרגת מהתקציב ב:</label>
         <label ng-if='!cart.failed'>נותר לך בתקציב: </label>
-        <label>{{diff| currency : ""}}<span>ש״ח</span></label>
+        <label class="amount-row"><span class="amount">{{diff| currency : ""}} </span><span>ש״ח</span></label>
+
         <div class="strikes">
-            <div class="strike" ng-class="{'strike-out' : strikes >= 1}"></div>
-            <div class="strike" ng-class="{'strike-out' : strikes >= 2}"></div>
-            <div class="strike" ng-class="{'strike-out' : strikes >= 3}"></div>
+
+            <div class="strike placeholder" ng-class="{'strike-out' : strikes >= 1}"></div>
+            <div class="strike placeholder" ng-class="{'strike-out' : strikes >= 2}"></div>
+            <div class="strike placeholder" ng-class="{'strike-out' : strikes >= 3}"></div>
         </div>
         <div class='buttons'>
-            <button ng-if="cart.failed && strikes < 3" ng-click="tryAgain()">ניסיון נוסף</button>
-            <button><a href='statistics'>סיום</a></button>
+            <a class="button" ng-if="cart.failed && strikes < 3" ng-click="tryAgain()">ניסיון נוסף</a>
+            <a class="button" href='statistics'>סיום</a>
         </div>
     </div>
 </div>
