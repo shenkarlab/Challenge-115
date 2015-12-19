@@ -1,5 +1,9 @@
 angular.module('app').controller('infoController',['$scope', function($scope) {
     $scope.greeting = 'Hola!';
+    $scope.user.age = 25;
+    $scope.user.children = 0;
+    $scope.user.city = "תל אביב";
+    var marital;
 
 
     /*
@@ -16,9 +20,27 @@ angular.module('app').controller('infoController',['$scope', function($scope) {
     /*
     * On Marital Picture Click
      */
-    $scope.setMarital = function(income_marital) {
+    $scope.setMarital = function(event,income_marital) {
+        if(marital!=null) {
+            angular.element(marital).css("opacity",1);
+        }
+        marital = event.currentTarget;
+        angular.element(event.currentTarget).css("opacity",0.5);
         $scope.user.marital = income_marital;
-        console.log(income_marital);
+    }
+
+    /*
+    * Increment The Aage Parameter
+     */
+    $scope.increment = function() {
+        $scope.user.age ++;
+    }
+
+    /*
+     * Decrement The Aage Parameter
+     */
+    $scope.decrement = function() {
+        $scope.user.age --;
     }
 
     /*
