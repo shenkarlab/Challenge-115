@@ -121,6 +121,10 @@ select .lt {
 .city label {
     margin-bottom: 10px;
 }
+.gender{
+    float:right;
+    font-size: large !important;
+}
 
 
 /**

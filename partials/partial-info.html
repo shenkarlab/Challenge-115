@@ -3,7 +3,7 @@
     <div class="input_row city">
         <label>בחר/י עיר</label>
         <select class="form-control0" ng-model="user.city">
-            <option class="lt" selected="selected">תל אביב</option>
+            <option class="lt">תל אביב</option>
             <option class="lt">חיפה</option>
             <option class="lt">עכו</option>
             <option class="lt">ראשון לציון</option>
@@ -21,22 +21,24 @@
         </div>
     </div>
     <!-- select gender -->
-    <div class="input_row">
-        גבר<input  type="checkbox" value="גבר">
-        אישה<input  type="checkbox" value="אישה" >
+    <div class="input_row ">
+        <input class="gender" type="checkbox" value="גבר">
+        <label class="gender">גבר</label>
+        <input class="gender" type="checkbox" value="אישה" >
+        <label class="gender">אישה</label>
     </div>
     <!-- Marital Status Blocks -->
     <div class="input_row maritals">
         <div class="marital">
-            <div class="marital-type" ng-click="setMarital('רווק')"></div>
+            <div class="marital-type" ng-click="setMarital($event,'רווק')"></div>
             <label>רווק</label>
         </div>
         <div class="marital">
-            <div class="marital-type" ng-click="setMarital('נשוי')"></div>
+            <div class="marital-type" ng-click="setMarital($event,'נשוי')"></div>
             <label>נשוי</label>
         </div>
         <div class="marital">
-            <div class="marital-type" ng-click="setMarital('גרוש')"></div>
+            <div class="marital-type" ng-click="setMarital($event,'גרוש')"></div>
             <label>גרוש</label>
         </div>
     </div>
