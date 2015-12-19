@@ -1,4 +1,4 @@
-angular.module('app').controller('infoController',['$scope', function($scope) {
+angular.module('app').controller('infoController',['$scope','$state', function($scope,$state) {
     $scope.greeting = 'Hola!';
     $scope.user.age = 25;
     $scope.user.children = 0;
@@ -50,5 +50,6 @@ angular.module('app').controller('infoController',['$scope', function($scope) {
         angular.forEach($scope.user, function(value, key) {
             console.log('value: ' + value);
         });
+        $state.transitionTo('supermarket');
     }
 }]);

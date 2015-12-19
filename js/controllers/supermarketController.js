@@ -17,7 +17,7 @@ app.controller('superController', ['$scope', '$http', '$compile', function ($sco
             item: 48
         };
 
-        $http.get('http://localhost:8080/group_by_category').then(function (res) {
+        $http.get('https://ws115.herokuapp.com/group_by_category').then(function (res) {
             $scope.isles = res.data;
             $("#super").mousewheel(function (event, delta) {
 

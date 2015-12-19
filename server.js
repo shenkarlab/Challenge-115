@@ -11,5 +11,5 @@ app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile(__dirname  + '/index.html');
 });
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
 console.log('server listening on port 8000 ...');

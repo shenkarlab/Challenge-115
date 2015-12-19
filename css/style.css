@@ -26,6 +26,7 @@ button, .button {
     padding: 2px 5px;
     display: inline-block;
     font-family: arial;
+    cursor: pointer;
 }
 
 /*
@@ -43,7 +44,9 @@ button, .button {
     margin: 0 auto;
 }
 .home nav .go {
-    width: 88%;
+    width: 80%;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 
@@ -117,6 +120,9 @@ select .lt {
     display: inline-block;
     margin-top: 10px;
     float: right;
+}
+.input_row.age_div {
+    display: none;
 }
 .age_row {
     clear:none;
@@ -417,17 +423,39 @@ div#summery {
     color: #fff;
 }
 
-#statistics-page .nav-container {
-    text-align: center
+
+
+
+.popup .items {
+    max-width: 360px;
+    margin: 0 auto;
 }
 
-.cart-item {
+.popup .cart-item {
     width: 25px;
     height: 25px;
     background-color: #fff;
     display: inline-block;
     vertical-align: top;
     margin: 5px;
+}
+
+
+/*
+
+statistics
+*/
+#statistics-page .nav-container {
+    text-align: center
+}
+
+a.active {
+    color: #c3251d;
+}
+
+
+
+
 .age_row {
     margin-right: 20px;
 }

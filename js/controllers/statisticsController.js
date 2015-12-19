@@ -7,8 +7,9 @@ app.controller('statisticsController', ['$scope', '$http', '$state', function ($
 
 app.controller('chartController', function ($scope, $state, $http) {
     var currentState = $state.current.name;
+    $scope.$parent.currentState = currentState;
     if (!(currentState in $scope.chartsData)) {
-        $http.get('http://localhost:8080/' + currentState ).then(function (res) {
+        $http.get('http://ws115.herokuapp.com/' + currentState ).then(function (res) {
             runChart(res.data);
             $scope.chartsData[currentState] = res.data;
         });

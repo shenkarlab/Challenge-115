@@ -2,9 +2,9 @@
     <div data-ui-view></div>
     <div class="nav-container">
         <nav>
-            <a data-ui-sref="statistics.sex">מין</a>
+            <a data-ui-sref="statistics.sex" ng-class="{'active' : currentState == 'statistics.sex'}" >מין</a>
             <span class="delimeter">|</span>
-            <a data-ui-sref="statistics.age">גיל</a>
+            <a data-ui-sref="statistics.age" ng-class="{'active' : currentState == 'statistics.age'}">גיל</a>
         </nav>
     </div>
 </div>
