@@ -30,14 +30,14 @@ angular.module('app').controller('infoController',['$scope','$state', function($
     }
 
     /*
-    * Increment The Aage Parameter
+    * Increment The Age Parameter
      */
     $scope.increment = function() {
         $scope.user.age ++;
     }
 
     /*
-     * Decrement The Aage Parameter
+     * Decrement The Age Parameter
      */
     $scope.decrement = function() {
         $scope.user.age --;

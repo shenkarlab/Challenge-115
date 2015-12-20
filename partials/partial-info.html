@@ -22,23 +22,23 @@
     </div>
     <!-- select gender -->
     <div class="input_row ">
-        <input class="gender" type="checkbox" value="גבר">
+        <input name="gen" class="gender" type="radio" value="גבר">
         <label class="gender">גבר</label>
-        <input class="gender" type="checkbox" value="אישה" >
+        <input name="gen" class="gender" type="radio" value="אישה" >
         <label class="gender">אישה</label>
     </div>
     <!-- Marital Status Blocks -->
     <div class="input_row maritals">
         <div class="marital">
-            <div class="marital-type" ng-click="setMarital($event,'רווק')"></div>
+            <div class="marital-type placeholder" ng-click="setMarital($event,'רווק')"></div>
             <label>רווק</label>
         </div>
         <div class="marital">
-            <div class="marital-type" ng-click="setMarital($event,'נשוי')"></div>
+            <div class="marital-type placeholder" ng-click="setMarital($event,'נשוי')"></div>
             <label>נשוי</label>
         </div>
         <div class="marital">
-            <div class="marital-type" ng-click="setMarital($event,'גרוש')"></div>
+            <div class="marital-type placeholder" ng-click="setMarital($event,'גרוש')"></div>
             <label>גרוש</label>
         </div>
     </div>
