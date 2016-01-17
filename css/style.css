@@ -505,3 +505,13 @@ a.active {
     font-weight: 600;
     cursor:pointer;
 }
+
+/*
+* Vegetables HTML
+*/
+.vegetables {
+    width: 1140px;
+    height: 800px;
+    margin: 0px auto;
+    border: 1px solid;
+}
