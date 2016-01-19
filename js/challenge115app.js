@@ -25,7 +25,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             .state('vegetables', {
                 url: '/vegetables',
                 templateUrl: 'partials/partial-vegetables.html',
-                controller: ''
+                controller: 'vegetablesController'
             })
 
             .state('statistics', {

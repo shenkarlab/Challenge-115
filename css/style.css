@@ -1,7 +1,13 @@
+/* Fonts Decleration */
 @import url(//fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+@font-face {
+    font-family: 'AlenbiSans';
+    src: url('../fonts/AlenbiSansOT/AlenbiSans_Regular.otf');
+}
+
 body {
-    font-family: 'Open Sans Hebrew' , sans-serif;
+    font-family: AlenbiSans, 'Open Sans Hebrew' , sans-serif;
 }
 a {
     color: #000;
@@ -510,6 +516,7 @@ a.active {
 * Vegetables HTML
 */
 .vegetables {
+    position:relative;
     width: 1080px;
     height: 675px;
     margin: 0px auto;
@@ -559,6 +566,9 @@ a.active {
     width:auto;
 
 }
+.lower_veg_row {
+    margin-top: 0px;
+}
 .shelf {
     float: left;
 }
@@ -584,6 +594,18 @@ a.active {
     background: url('../images/vegetables/red_sign.svg');
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 10;
+}
+.veg_sign p {
+    margin: 0px auto;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    padding-top: 7px;
+    font-family: AlenbiSans;
+    color:#FFFFFF;
+    font-size: 18px;
 }
 .veg_sign img   {
     margin: 0px auto;
@@ -598,13 +620,75 @@ a.active {
     height:inherit;
     background: #001F3F;
     margin-right: 5px;
+    position: relative;
 }
 .right_shelf {
     width:260px;
     height:inherit;
     background: #001F3F;
+    position: relative;
 }
 .shelfs_bottom {
     height:18px;
     background-color: #EF3938;
+    position: relative;
+}
+.seperator {
+    height:19px;
+    border-bottom: 1px solid #7F1B29;
+}
+
+
+
+
+/*
+* Directives CSS
+*/
+
+/* Bottom Bar */
+.bottom_bar {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 100px;
+}
+.cash_desk {
+    width: 104px;
+    height: 33px;
+    background: #FFC044;
+    border-radius: 4px;
+    border:1px solid black;
+    position: absolute;
+    left: 40px;
+    bottom: 28px;
+}
+.cash_desk p {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: 700;
+}
+.shopping_cart {
+    background: url('../images/cart.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width:67px;
+    height:64px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 16px;
+}
+.cart_lifes {
+    height: 33px;
+    position: absolute;
+    bottom: 28px;
+    right: 80px;
+}
+.cart_lifes #lifes_group {
+    height: 100%;
 }
