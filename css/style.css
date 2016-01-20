@@ -661,6 +661,7 @@ a.active {
     position: absolute;
     left: 40px;
     bottom: 28px;
+    cursor: pointer;
 }
 .cash_desk p {
     position: relative;
@@ -682,6 +683,7 @@ a.active {
     right: 0;
     margin: auto;
     bottom: 16px;
+    cursor: pointer;
 }
 .cart_lifes {
     height: 33px;
