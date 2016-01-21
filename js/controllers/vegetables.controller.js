@@ -4,7 +4,17 @@ angular.module('app').controller('vegetablesController',['$scope','$state','prod
     $scope.user.children = 0;
     $scope.user.city = "תל אביב";
     $scope.products = [];
-    var marital= productsFactory;
+    //var marital= productsFactory;
+        //console.log('hey vegetables ' + res.data);
+
+    var myDataPromise = productsFactory.getData();
+
+    myDataPromise.then(function(result) {  // this is only run after $http completes
+        $scope.data = result;
+        console.log("data.name"+$scope.data.name);
+    });
+
+    console.log('veg controller');
 
 
     /*$http.get('https://ws115.herokuapp.com/group_by_category').then(function (res) {
