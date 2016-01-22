@@ -1,3 +1,8 @@
+/* default resolve */
+html, body, .ng-scope {
+    height:100%;
+}
+
 /* Fonts Decleration */
 @import url(//fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
@@ -693,4 +698,14 @@ a.active {
 }
 .cart_lifes #lifes_group {
     height: 100%;
+}
+
+#veg_wrapper {
+    width: 1200px;
+    height :100%;
+    display: block;
+}
+
+#veg_page {
+    height:inherit;
 }
