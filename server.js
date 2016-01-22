@@ -6,6 +6,7 @@ app.use('/dist', express.static(__dirname + '/../dist'));
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/partials', express.static(__dirname + '/partials'));
 app.use('/images', express.static(__dirname + '/images'));
+app.use('/fonts', express.static(__dirname + '/fonts'));
 
 app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
