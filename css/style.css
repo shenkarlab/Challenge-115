@@ -36,14 +36,50 @@ html, body, .ng-scope {
     font-weight: 900;
 }
 
+@font-face {
+    font-family: "mekomi";
+    src: url('../fonts/Mekomi%20AAA/mekomi-aaa-light.otf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "mekomi";
+    src: url('../fonts/Mekomi%20AAA/mekomi-aaa-regular.otf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: "mekomi";
+    src: url('../fonts/Mekomi%20AAA/mekomi-aaa-medium.otf');
+    font-weight: 600;
+}
+@font-face {
+    font-family: "mekomi";
+    src: url('../fonts/Mekomi%20AAA/mekomi-aaa-bold.otf');
+    font-weight: 800;
+}
+@font-face {
+    font-family: "mekomi";
+    src: url('../fonts/Mekomi%20AAA/mekomi-aaa-black.otf');
+    font-weight: 900;
+}
+@font-face {
+    font-family: "alenbiSerif";
+    src: url('../fonts/AlenbiSerifOT/AlenbiSerifRegular.otf');
+    font-weight: 400;
+}
 body {
-    font-family: AlenbiSans, 'Open Sans Hebrew', sans-serif;
+    font-family: mekomi, AlenbiSans, 'Open Sans Hebrew', sans-serif;
     margin: 0;
 }
 a {
     color: #fff5d9;
     text-decoration: none;
     cursor: pointer;
+}
+
+h1 ,h2 , h3 ,h4 ,h5 ,h6 {
+    font-family: alenbiSerif, serif;
+    font-weight: 400;
 }
 
 a:hover {
@@ -64,6 +100,7 @@ button, .button, a.button {
     padding: 7px 40px;
     cursor: pointer;
     border-radius: 5px;
+    font-family: AlenbiSans, serif;
 }
 
 /*
@@ -132,7 +169,7 @@ button, .button, a.button {
 }
 .home main p {
     line-height: 1.5;
-    font-size: 1.5vw;
+    font-size: 1.4vw;
 }
 .home .home-sidebar nav {
     padding-top: 31%;
@@ -161,6 +198,7 @@ button, .button, a.button {
     font-size: 1vw;
     font-weight: 100;
     height: 15%;
+    font-family: alenbiSans, serif;
 }
 
 .home footer .wrap {
@@ -205,6 +243,10 @@ input.city {
     background-color: transparent;
     border: 2px solid #FFF5D9;
     color: #FFF5D9;
+    WIDTH: 50%;
+    height: 2vw;
+    border-radius: 7px;
+    font-size: 1.5vw;
 }
 
 .radio-container {
@@ -238,30 +280,31 @@ input.city {
     display: block;
 }
 
-.form .buttons span {
+.form .buttons span,
+.success-rates .buttons span{
     display: block;
 }
 
-.home.form .childeren {
+.home .childeren {
     width: 6%;
     position: relative;
 }
 
-.home.form .childeren .buttons {
+.home .childeren .buttons {
     position: absolute;
     left: -60%;
     top: 30%;
     font-size: 2vw;
 }
 
-.home.form .childeren .buttons span {
+.home .childeren .buttons span {
     cursor: pointer;
 }
 
-.home.form .childeren .buttons span:hover {
+.home .childeren .buttons span:hover {
     color: #febf44;
 }
-.home.form .childeren span.amount {
+.home .childeren span.amount {
     position: absolute;
     top: 4%;
     right: 13%;
@@ -280,6 +323,10 @@ input.city {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 .radio-container input[type='radio'] {
     visibility: hidden;
     position: absolute;
@@ -296,7 +343,21 @@ input.city {
 div[mass-autocomplete] {
     position: relative;
 }
+::-webkit-input-placeholder {
+    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+}
 
+:-ms-input-placeholder {
+    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+}
+
+::-moz-placeholder {
+    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+}
+
+::-moz-placeholder {
+    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+}
 .ac-container {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -312,7 +373,7 @@ div[mass-autocomplete] {
     top: 0 !important;
     right: 0;
     color: #000;
-    margin-top: 3%;
+    margin-top: 5%;
 }
 .ac-container .ac-menu {
     border: 1px solid #ccc;
@@ -348,7 +409,304 @@ input.error {
     border-color: red;
 }
 
+/**
+ statistics
+*/
 
+#statistics-page {
+    height: auto;
+}
+#statistics-page .home-header {
+    height: 9vw;
+}
+#statistics-page main {
+    margin-right: 20%;
+}
+
+#statistics-page main .wrap {
+    max-width: 80%;
+    position: relative;
+    margin: 0;
+}
+#statistics-page main h1 span {
+    color: #febf44;
+
+}
+
+.stats-section {
+    position: relative;
+    padding: 4% 0;
+    border-bottom: 4px solid #FEBF44;
+}
+
+#statistics-page .stats-section h2 {
+    border-bottom: none;
+}
+
+.stats-section .product-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    text-align: center;
+    position: relative;
+}
+
+.stats-section .product-container img {
+    width: 100%;
+}
+
+.stats-section .product-container label {
+    color: #001D2D;
+    background-color: #FEBF44;
+    padding: 0.2vw 1vw;
+    width: 100%;
+    font-size: 1.3vw;
+    border-radius: 3px;
+}
+
+.stats-section .products {
+    width: 80%;
+    display: inline-block;
+    vertical-align: top;
+}
+.stats-section .left {
+    display: inline-block;
+    width: 19%;
+    vertical-align: top;
+}
+
+.stats-section .stats-sign {
+    position: absolute;
+    background: url(../images/sign.png) no-repeat;
+    width: 20%;
+    height: 7vw;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.stats-sign span {
+    color: #001D2D;
+    margin-top: 2.3vw;
+    display: block;
+    font-size: 1.4vw;
+    font-family: alenbiSans;
+}
+.stats-section .phone {
+    background: url(../images/phone.png) no-repeat;
+    background-size: contain;
+    height: 12vw;
+    background-position-x: 50%;
+    position: relative;
+}
+.phone div {
+    width: 50%;
+    height: 27%;
+    position: absolute;
+    top: 30%;
+    right: 14%;
+    text-align: center;
+    display: table;
+}
+.stats-section .phone span {
+    color: #001D2D;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 1.5vw;
+    font-family: alenbiSans;
+}
+
+.home .success-rates h1,
+.home .success-rates h2 {
+    border:none;
+}
+.home .success-rates h1 {
+    font-size: 2vw;
+}
+
+.success-rates .filter-column {
+    width: 20%;
+    float: right;
+}
+#statistics-page.home .success-rates {
+    font-family: 'mekomi', serif;
+    margin-bottom: 6%;
+
+}
+
+.home .success-rates h3 {
+    margin:0;
+}
+
+.home .success-rates h2 {
+    color: #FDBF45;
+    font-size: 1.3vw;
+    margin-bottom: 10%;
+}
+.home .success-rates .left {
+    color: #fff;
+    font-size: 1.3vw;
+    float: right;
+    width: auto;
+    margin-right: 10%;
+}
+
+.success-rates .row.checked .left h3 {
+    color: #febf44;
+}
+
+.success-rates .ac-container {
+    margin-top: 21%;
+}
+
+span.participants {
+    color: #FEBF44;
+    display: block;
+    font-size: 1.5vw;
+
+}
+
+span.participants.amount {
+    font-size: 3vw;
+    margin-top: 5%;
+}
+.clear {
+    clear: both;
+}
+
+.filter-column .row {
+    margin-bottom: 2%;
+}
+
+.success-rates .filter-column .square {
+    width: 20%;
+    border: 1px solid #fff;
+    height: 2.5vw;
+    float: right;
+    cursor: pointer;
+}
+
+.success-rates .filter-column .face {
+    border: none;
+}
+.success-rates .filter-column .face.male {
+    background: url(../images/svg/male.svg) no-repeat;
+}
+
+.success-rates .filter-column .face {
+    background: url(../images/svg/female.svg) no-repeat;
+}
+
+.success-rates .childeren {
+    width:30%;
+}
+
+.success-rates input.city {
+    width: 80%;
+}
+
+.square.success {
+    background-color: #8dc641;
+}
+.square.failed {
+    background-color: #cd2027;
+}
+
+.success-rates .buttons {
+    margin-top: 2%;
+}
+.success-rates .buttons > div {
+    width: 15%;
+    height: 2vw;
+    background-size: contain !important;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.success-rates .buttons .bycolor {
+    background: url('../images/bycolor.png') no-repeat;
+    width: 18%;
+}
+
+.success-rates .buttons .bycolor.gold {
+    background: url('../images/bycolor-gold.png') no-repeat;
+}
+
+.success-rates .buttons .clock {
+    background: url('../images/clock.png') no-repeat;
+}
+.success-rates .buttons .clock.gold {
+    background: url('../images/clock-gold.png') no-repeat;
+}
+.success-rates .buttons .israel {
+    background: url('../images/israel.png') no-repeat;
+    background-position-x: 100%;
+}
+
+.success-rates .buttons .israel.gold {
+    background: url('../images/israel-gold.png') no-repeat;
+    background-position-x: 100%;
+}
+
+.success-rates .avatar {
+    width: 2vw;
+    height: 4vw;
+    background-size: contain;
+    display: inline-block;
+    background-position-x: 50%;
+}
+
+.success-rates .carts .cart {
+    FLOAT: right;
+    margin: 2%;
+}
+
+.cart .city-label {
+    text-align: center;
+    font-size: 1vw;
+}
+.passed .male.avatar {
+    background-image: url('../images/avatars/green_m.png');
+    background-repeat: no-repeat;
+}
+
+.passed .female.avatar {
+    background-image: url('../images/avatars/green_w.png');
+    background-repeat: no-repeat;
+}
+
+.failed .male.avatar {
+    background-image: url('../images/avatars/red_m.png');
+    background-repeat: no-repeat;
+}
+
+.failed .female.avatar {
+    background-image: url('../images/avatars/red_w.png');
+    background-repeat: no-repeat;
+}
+
+.passed .boy.avatar {
+    background-image: url('../images/avatars/green_b.png');
+    background-repeat: no-repeat;
+}
+
+.passed .girl.avatar {
+    background-image: url('../images/avatars/green_g.png');
+    background-repeat: no-repeat;
+}
+
+
+.failed .boy.avatar {
+    background-image: url('../images/avatars/red_b.png');
+    background-repeat: no-repeat;
+}
+
+.failed .girl.avatar {
+    background-image: url('../images/avatars/red_g.png');
+    background-repeat: no-repeat;
+}
 /**
 * partial-supermarket
 */
@@ -606,22 +964,6 @@ div#summery {
     vertical-align: top;
     margin: 5px;
 }
-
-
-/*
-
-statistics
-*/
-#statistics-page .nav-container {
-    text-align: center
-}
-
-a.active {
-    color: #c3251d;
-}
-
-
-
 
 .age_row {
     margin-right: 20px;
@@ -910,7 +1252,7 @@ a.active {
         font-size: 4vw;
     }
     .home main p {
-        font-size: 3vw;
+        font-size: 2.6vw;
     }
     .home footer {
         font-size: 2vw;
@@ -949,9 +1291,10 @@ a.active {
     .home.form main h1 {
         font-size: 4vw;
     }
+
     input.city {
-        width: 30%;
-        height: 3vw;
+        width: 53%;
+        height: 4vw;
     }
     .ac-container {
         margin-top: 5%;

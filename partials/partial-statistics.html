@@ -1,10 +1,132 @@
-<div id="statistics-page">
-    <div data-ui-view></div>
-    <div class="nav-container">
-        <nav>
-            <a data-ui-sref="statistics.sex" ng-class="{'active' : currentState == 'statistics.sex'}" >מין</a>
-            <span class="delimeter">|</span>
-            <a data-ui-sref="statistics.age" ng-class="{'active' : currentState == 'statistics.age'}">גיל</a>
-        </nav>
-    </div>
+<div id="statistics-page" class="home">
+    <header class="home-header">
+        <img src="../images/svg/logo.svg" class="logo">
+    </header>
+    <main>
+        <div class="wrap">
+            <h1>אתגר ה-115<span> הנתונים</span></h1>
+            <div class="stats-section">
+                <div class="stats-sign">
+                    <span>הקרוב שהרוב לא הצליחו לעמוד בפניו</span>
+                </div>
+                <h2>חמשת המוצרים הכי פופולריים</h2>
+                <div class="products">
+                <div class="product-container" ng-repeat="product in favoriteProducts">
+                    <img ng-src="images/products/{{product._id}}.png">
+                    <label>{{product._id}}</label>
+                </div>
+                    </div>
+                <div class="left">
+
+                    <div class="phone">
+                        <div>
+                            <span>{{favoriteRelative}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-section">
+                <div class="stats-sign">
+                    <span>המצבע שהרוב לא הצליחו לעמוד בפניו</span>
+                </div>
+                <h2>חמשת המוצרים עליהם ויתר הרוב</h2>
+                <div class="products">
+                <div class="product-container" ng-repeat="product in rejectedProducts">
+                    <img ng-src="images/products/{{product._id}}.png">
+                    <label>{{product._id}}</label>
+                </div>
+                    </div>
+                <div class="left">
+                    <div class="gift">
+                        <div>
+                            <span>{{favoriteOffer}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="success-rates">
+                <h1>שיעורי ההצלחה של האתגר</h1>
+                <div>
+                    <div class="filter-column">
+                        <h2>הצלחה</h2>
+                        <div class="row" ng-class="{checked : filters.passed === true}">
+                            <div class="square success" ng-click="toggleSuccess('passed')"></div>
+                            <div class="left">
+                                <h3>הצליחו</h3>
+                                <span>{{passedCount}}</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="row" ng-class="{checked : filters.passed === false}">
+                            <div class="square failed" ng-click="toggleSuccess('failed')"></div>
+                            <div class="left">
+                                <h3>לא הצליחו</h3>
+                                <span>{{failedCount}}</span>
+                            </div>
+                            <div class="clear"></div>
+
+                        </div>
+                    </div>
+                    <div class="filter-column">
+                        <h2>מין</h2>
+                        <div class="row" ng-class="{checked : filters.sex == 'zahar'}">
+                            <div class="square face male" ng-click="toggleSex('male')"></div>
+                            <div class="left">
+                                <h3>זכר</h3>
+                                <span>{{maleCount}}</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="row" ng-class="{checked : filters.sex == 'female'}">
+                            <div class="square face female" ng-click="toggleSex('female')"></div>
+                            <div class="left">
+                                <h3>נקבה</h3>
+                                <span>{{femaleCount}}</span>
+                            </div>
+                            <div class="clear"></div>
+
+                        </div>
+                    </div>
+                    <div class="filter-column">
+                        <h2>מספר ילדים</h2>
+                        <div class="childeren">
+                            <img src="../images/svg/girl.svg" />
+                            <span class="amount" ng-class="{hidden: children == -1}">{{children}}</span>
+                            <div class="buttons"><span ng-click="increment()">+</span><span ng-click="decrement()">-</span></div>
+                        </div>
+                    </div>
+                    <div class="filter-column">
+                        <h2>עיר</h2>
+                        <div mass-autocomplete>
+                            <input class="city" ng-blur="check_city()" ng-model="filters.city"
+                                   mass-autocomplete-item="autocomplete_options">
+                        </div>
+                    </div>
+                    <div class="filter-column">
+                        <span class="participants amount">{{carts.length}}</span>
+                        <span class="participants">משתתפים</span>
+                        <div class="buttons">
+                            <div class="bycolor" ng-click="order('passed')" ng-class="{gold: predicate == 'passed'}"></div>
+                            <div class="clock" ng-click="order('date')" ng-class="{gold: predicate == 'date'}"></div>
+                            <div class="israel" ng-click="order('city')" ng-class="{gold: predicate == 'city'}"></div>
+                        </div>
+                        <a ng-click="predicate=''">נקה</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="carts">
+                    <div class="cart" ng-repeat="item in carts | filter:filters | orderBy:predicate"
+                    ng-class="{passed : item.passed ,
+                    failed : !item.passed}">
+                        <div class="avatar" ng-class="{male : item.sex == 'zahar',female : item.sex == 'female'}"></div>
+                        <div class="avatar" ng-if="item.marital == 'married'" ng-class="{female : item.sex == 'zahar',male : item.sex == 'female'}"></div>
+                        <div class="avatar" ng-repeat="child in childrenRange(item.children)"
+                             ng-class="{boy : $index % 2 == 0, girl: $index % 2 != 0}"></div>
+                        <div class="city-label" ng-show="predicate == 'city'">{{item.city}}</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
