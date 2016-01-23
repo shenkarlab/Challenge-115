@@ -100,7 +100,6 @@ angular.module('app').controller('marketController',['$scope','$state','products
 
 
 
-            var eggplants = g_groups['eggplant'].children;
         }
 
 
