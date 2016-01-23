@@ -1,37 +1,29 @@
 app.factory('productsFactory', function($http, $q) {
+    console.log('factory called');
     var prodFactory = {};
     prodFactory.isles = []; // represent the products array
-    console.log('factory initialized');
-
 
     /*
     * Initially Get All Products Resolved By Category
      */
-    /*$http.get('https://ws115.herokuapp.com/group_by_category').success(function (res) {
-        prodFactory.isles = res.data;
-        console.log('hey factory ' + res.data);
-    }); */
+    prodFactory.initialize = function() {
+        var deferred = $q.defer();
 
-    //console.log('factory isles: ' + prodFactory.isles);
-
-    var getData = function() {
-        console.log('hey factory ');
-        return $http.get('https://ws115.herokuapp.com/group_by_category').then(function(result){
-            return result.data;
-            console.log('hey factory ' + result.data);
+        var promise = $http.get('https://ws115.herokuapp.com/group_by_category').success(function (data) {
+            prodFactory.isles = data.data;
+            console.log('hey factory ' + data.data);
         });
+
+        return promise;
     };
 
+    /*
+     * Initially Get All Products Resolved By Category
+     */
+    prodFactory.getProducts = function(category) {
+        console.log('inside getProducts');
+        return prodFactory.isles[category];
+    };
 
-
-
-    return { getData: getData };
-
-
-
-
-
-
-    //console.log(_prodFactory.getProducts());
-    //return prodFactory;
+    return prodFactory;
 });
