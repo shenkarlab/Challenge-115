@@ -6,7 +6,15 @@ angular.module('app').controller('marketController',['$scope','$state','products
     $scope.isles = [];
     $scope.pages = [];
     $scope.pages.push(  {"id":"veg_page", "name": "פירות וירקות"}    );
-    init();
+
+    // init only when DOM is ready
+    angular.element(document).ready(function () {
+        console.log('controller: document is ready');
+        init();
+    });
+
+
+
 
     function init() {
         productsFactory.initialize().then(function (results) {
@@ -77,7 +85,7 @@ angular.module('app').controller('marketController',['$scope','$state','products
                                 $(this).click(function() {
                                     //eggplants_array.push($(this));
                                     //console.log('last element: ' + eggplants_array[0]);
-                                    $(this).hide(500);
+                                    $(this).hide(350);
                                 });
                             }
                         });
