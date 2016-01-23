@@ -1,60 +1,63 @@
-<div class="reg_form">
-    <!-- Select City -->
-    <div class="input_row city">
-        <label>בחר/י עיר</label>
-        <select class="form-control0" ng-model="user.city">
-            <option class="lt">תל אביב</option>
-            <option class="lt">חיפה</option>
-            <option class="lt">עכו</option>
-            <option class="lt">ראשון לציון</option>
-            <option class="lt">רעננה</option>
-        </select>
-    </div>
-    <!-- select Age -->
-    <div class="input_row age_div">
-        <label>גיל</label>
-        <!-- <input type="number" ng-model="user.age" min="1" max="100"> -->
-        <div class="input_row age_row">
-            <p ng-click="decrement()" class="active_num">-</p>
-            <p class="number_p">{{user.age}}</p>
-            <p ng-click="increment()" class="active_num plus_num">+</p>
-        </div>
-    </div>
-    <!-- select gender -->
-    <div class="input_row ">
-        <input name="gen" class="gender" type="radio" value="גבר">
-        <label class="gender">גבר</label>
-        <input name="gen" class="gender" type="radio" value="אישה" >
-        <label class="gender">אישה</label>
-    </div>
-    <!-- Marital Status Blocks -->
-    <div class="input_row maritals">
-        <div class="marital">
-            <div class="marital-type placeholder" ng-click="setMarital($event,'רווק')"></div>
-            <label>רווק</label>
-        </div>
-        <div class="marital">
-            <div class="marital-type placeholder" ng-click="setMarital($event,'נשוי')"></div>
-            <label>נשוי</label>
-        </div>
-        <div class="marital">
-            <div class="marital-type placeholder" ng-click="setMarital($event,'גרוש')"></div>
-            <label>גרוש</label>
-        </div>
-    </div>
-    <!-- Number Of Children -->
-    <div class="input_row">
-        <label>מספר ילדים</label>
-        <div class="input_row range_row">
-            <input type="range" min="0" max="10" ng-model="user.children">
-            <p>{{user.children}}</p>
-        </div>
+<div class="home form">
+    <header class="home-header">
+        <img src="../images/svg/logo.svg" class="logo">
+    </header>
+    <main>
+        <div class="wrap">
+            <h1>לקבלת התקציב המתאים עבורך אנא מלא/י את הפרטים הבאים:</h1>
+            <form>
+                <div>
+                    <div mass-autocomplete>
+                        <input class="city" ng-blur="check_city()" ng-model="dirty.value"
+                               mass-autocomplete-item="autocomplete_options">
+                    </div>
+                </div>
+                <div>
+                    <div class="radio-container">
+                        <label class="click" for="male"></label>
+                        <input type="radio" value="male" id="male" name="sex" ng-model="sex" checked>
+                        <div class="radio"><img src="../images/svg/male.svg"></div>
+                        <label>זכר</label>
+                    </div>
+                    <div class="radio-container">
+                        <label class="click" for="female"></label>
+                        <input type="radio" value="female" id="female" name="sex" ng-model="sex">
+                        <div class="radio"><img src="../images/svg/female.svg"></div>
+                        <label>נקבה</label>
+                    </div>
 
-    </div>
-
-    <div class="input_row">
-        <div ng-click="registerForm()" class="send_btn">
-            <p>המשך</p>
+                </div>
+                <div>
+                    <div class="radio-container">
+                        <label class="click" for="single"></label>
+                        <input type="radio" value="single" id="single" name="marital" ng-model="marital" checked>
+                        <div class="radio"><img src="../images/svg/single.svg"></div>
+                        <label>רווק</label>
+                    </div>
+                    <div class="radio-container">
+                        <label class="click" for="married"></label>
+                        <input type="radio" value="married" id="married" name="marital" ng-model="marital">
+                        <div class="radio"><img src="../images/svg/married.svg"></div>
+                        <label>נשוי</label>
+                    </div>
+                    <div class="radio-container">
+                        <label class="click" for="divorced"></label>
+                        <input type="radio" value="divorced" id="divorced" name="marital" ng-model="marital">
+                        <div class="radio"><img src="../images/svg/divorced.svg"></div>
+                        <label>גרוש</label>
+                    </div>
+                </div>
+                <div>
+                    <label>מספר ילדים</label>
+                    <div class="childeren">
+                        <img src="../images/svg/girl.svg" />
+                        <span class="amount">{{children}}</span>
+                        <div class="buttons"><span ng-click="increment()">+</span><span ng-click="decrement()">-</span></div>
+                    </div>
+                </div>
+                <a ng-click="register()" class="button go">המשך</a>
+            </form>
         </div>
-    </div>
+    </main>
+
 </div>
