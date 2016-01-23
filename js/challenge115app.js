@@ -1,5 +1,5 @@
 // app.js
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router','ngSanitize','MassAutoComplete']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);

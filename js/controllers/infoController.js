@@ -1,55 +1,86 @@
-angular.module('app').controller('infoController',['$scope','$state', function($scope,$state) {
-    $scope.greeting = 'Hola!';
-    $scope.user.age = 25;
-    $scope.user.children = 0;
-    $scope.user.city = "תל אביב";
-    var marital;
+angular.module('app').controller('infoController',['$scope','$state','$http', function($scope,$state,$http) {
 
+    $scope.cities = [{id: 0,name:"bbb"}];
+    $scope.dirty = {};
+    $scope.sex = "male";
+    $scope.marital = "single";
+    $scope.children = 0;
+    $scope.city_valid = false;
 
-    /*
-    * On Checkbox Changed
-     */
-    $(':checkbox').change(function() {
-        console.log('value: ' + this.value);
-        var gen = this.value;
-        $scope.user.gender = gen;
-        // do stuff here. It will fire on any checkbox change
+    function suggest_city(term) {
+        var q = term.toLowerCase().trim();
+        var results = [];
 
-    });
-
-    /*
-    * On Marital Picture Click
-     */
-    $scope.setMarital = function(event,income_marital) {
-        if(marital!=null) {
-            angular.element(marital).css("opacity",1);
+        // Find first 10 states that start with `term`.
+        for (var i = 0; i < $scope.cities.length && results.length < 10; i++) {
+            var city = $scope.cities[i];
+            if (city.name.toLowerCase().indexOf(q) === 0)
+                results.push({ label: city.name, value: city.name });
         }
-        marital = event.currentTarget;
-        angular.element(event.currentTarget).css("opacity",0.5);
-        $scope.user.marital = income_marital;
+
+        return results;
     }
 
+    $scope.check_city = function () {
+        var city_selected = $scope.dirty.value;
+        for (var i = 0 ; i < $scope.cities.length ; i++) {
+            if (city_selected === $scope.cities[i].name ) {
+                $scope.city_valid = true;
+                break;
+            }
+            else {
+                $scope.city_valid = false;
+            }
+        }
+        if (!$scope.city_valid) {
+            $scope.dirty.value = "";
+        }
+        else {
+            $("input.city").removeClass("error");
+        }
+    };
+    $scope.autocomplete_options = {
+        suggest: suggest_city
+    };
+
+    $http.get('./misc/israel-cities.json').then(function(res){
+        $scope.cities = res.data;
+    });
     /*
     * Increment The Age Parameter
      */
     $scope.increment = function() {
-        $scope.user.age ++;
-    }
+        if ($scope.children == 8) {
+            return;
+        }
+        $scope.children ++;
+    };
 
     /*
      * Decrement The Age Parameter
      */
     $scope.decrement = function() {
-        $scope.user.age --;
-    }
+        if ($scope.children == 0) {
+            return;
+        }
+        $scope.children --;
+    };
 
     /*
     * On Registration Form
      */
-    $scope.registerForm = function() {
-        angular.forEach($scope.user, function(value, key) {
-            console.log('value: ' + value);
-        });
+    $scope.register = function() {
+        if (!$scope.city_valid) {
+            $("input.city").addClass("error");
+            return;
+        }
+        $scope.$parent.user = {
+            city: $scope.dirty.city.value,
+            children: $scope.children,
+            sex: $scope.sex,
+            marital: $scope.marital
+        }
+
         $state.transitionTo('supermarket');
     }
 }]);
