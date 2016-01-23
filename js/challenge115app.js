@@ -16,16 +16,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 controller: 'infoController'
             })
 
-            .state('supermarket', {
+            /*.state('supermarket', {
                 url: '/supermarket',
                 templateUrl: 'partials/partial-supermarket.html',
                 controller: 'superController'
-            })
+            }) */
 
-            .state('vegetables', {
-                url: '/vegetables',
-                templateUrl: 'partials/partial-vegetables.html',
-                controller: 'vegetablesController'
+            .state('supermarket', {
+                url: '/supermarket',
+                templateUrl: 'partials/supermarket.html',
+                controller: 'marketController'
             })
 
             .state('statistics', {
@@ -47,6 +47,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 });
 
 app.controller('mainController', function ($scope) {
+    $scope.ready  = false;
     $scope.hello = "hello";
     $scope.cart = {
         "user": $scope.user,
@@ -56,8 +57,21 @@ app.controller('mainController', function ($scope) {
     };
     $scope.user = {};
     //$scope.user;
-})
+});
 
-        .controller('home', ['$scope', function ($scope) {
+// This is where your initialization code goes, which
+// may depend on services declared on the module.
+// Initalize the productsFactory with its data, on application run()
+/*app.run(['$window', 'productsFactory', function($window, productsFactory) {
+    /*productsFactory.initialize().then(function(results){
+        console.log('after factory promise');
+        //$scope.ready = true;
+        // deal with results.
+    }); */
 
-            }]);
+
+    /*console.log('factory finished');
+    //$window.alert('Started!');
+    console.log('App Started!');
+}]); */
+
