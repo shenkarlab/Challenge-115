@@ -12,52 +12,61 @@
                                mass-autocomplete-item="autocomplete_options">
                     </div>
                 </div>
-                <div>
+                <div class="radio-row">
                     <div class="radio-container">
                         <label class="click" for="male"></label>
                         <input type="radio" value="zahar" id="male" name="sex" ng-model="sex" checked>
-                        <div class="radio"><img src="../images/svg/male.svg"></div>
-                        <label>זכר</label>
+                        <div class="radio">
+                            <img src="../images/svg/male.svg">
+                            <label>זכר</label>
+                        </div>
                     </div>
                     <div class="radio-container">
                         <label class="click" for="female"></label>
                         <input type="radio" value="female" id="female" name="sex" ng-model="sex">
-                        <div class="radio"><img src="../images/svg/female.svg"></div>
-                        <label>נקבה</label>
+                        <div class="radio"><img src="../images/svg/female.svg">
+
+                            <label>נקבה</label>
+                        </div>
                     </div>
 
                 </div>
-                <div>
+                <div class="radio-row">
                     <div class="radio-container">
                         <label class="click" for="single"></label>
                         <input type="radio" value="single" id="single" name="marital" ng-model="marital" checked>
-                        <div class="radio"><img src="../images/svg/single.svg"></div>
-                        <label>רווק</label>
+                        <div class="radio"><img src="../images/svg/single.svg">
+                            <label>רווק</label>
+                        </div>
                     </div>
                     <div class="radio-container">
                         <label class="click" for="married"></label>
                         <input type="radio" value="married" id="married" name="marital" ng-model="marital">
-                        <div class="radio"><img src="../images/svg/married.svg"></div>
-                        <label>נשוי</label>
+                        <div class="radio"><img src="../images/svg/married.svg">
+                            <label>נשוי</label>
+                        </div>
                     </div>
                     <div class="radio-container">
                         <label class="click" for="divorced"></label>
                         <input type="radio" value="divorced" id="divorced" name="marital" ng-model="marital">
-                        <div class="radio"><img src="../images/svg/divorced.svg"></div>
-                        <label>גרוש</label>
+                        <div class="radio"><img src="../images/svg/divorced.svg">
+                            <label>גרוש</label>
+                        </div>
                     </div>
                 </div>
                 <div>
                     <label>מספר ילדים</label>
                     <div class="childeren">
-                        <img src="../images/svg/girl.svg" />
+                        <img src="../images/svg/girl.svg"/>
                         <span class="amount">{{children}}</span>
-                        <div class="buttons"><span ng-click="increment()">+</span><span ng-click="decrement()">-</span></div>
+                        <div class="buttons"><span ng-click="increment()">+</span><span ng-click="decrement()">-</span>
+                        </div>
                     </div>
                 </div>
                 <a ng-click="register()" class="button go">המשך</a>
             </form>
         </div>
     </main>
+    <div class="clear"></div>
 
 </div>

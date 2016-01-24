@@ -82,6 +82,10 @@ h1 ,h2 , h3 ,h4 ,h5 ,h6 {
     font-weight: 400;
 }
 
+p {
+    line-height: 1.5;
+}
+
 a:hover {
     color: #febf44;
 }
@@ -111,37 +115,40 @@ button, .button, a.button {
     background-color: #001d2d;
     color: #fff5d9;
     direction: rtl;
-    position: absolute;
-    height: 100%;
+    height: auto;
     width: 100%;
+    position: relative;
 }
 
 .home .home-header {
-    height: 17%;
     position: relative;
 }
 
 .home .home-header img.logo {
-    width: 10%;
-    position: absolute;
-    bottom: 0;
-    right: 5%;
+    width: 9.11136108%;
+    margin-right: 5.024371954%;
+    margin-top: 4.9499%;
 }
 
 .home aside.home-sidebar {
-    width: 20%;
+    width: 19.87251594%;
     float: right;
     position: relative;
-    height: 68%;
 }
 
 .home aside.home-sidebar .sidebar-link {
-    width: 13%;
+    width:100%;
     display: block;
     margin: 0 auto;
     text-align: center;
     padding-bottom: 14%;
-    font-size: 1vw;
+    font-size: 1.34615384615vw;
+}
+
+.home aside.home-sidebar .sidebar-link img {
+    width: 15.3%;
+    display: block;
+    margin: 2% auto;
 }
 
 .home aside.home-sidebar .sidebar-link span {
@@ -149,35 +156,37 @@ button, .button, a.button {
 }
 
 .home main .wrap {
-    max-width: 54%;
+    max-width: 60.6925596631%;
     position: relative;
     margin: 0;
 }
 
 .home main h1 {
-    font-size: 5vw;
+    font-size: 5.57692307692vw;
     border-bottom: 4px solid #FEBF44;
     margin-bottom: 0;
     margin-top: 2%;
 }
 
 .home main h2 {
-    font-size: 2vw;
+    font-size: 2.23076923077vw;
     border-bottom: 4px solid #FEBF44;
-    padding-bottom: 9px;
+    padding-bottom: 3%;
     margin-bottom: 0;
 }
 .home main p {
-    line-height: 1.5;
-    font-size: 1.4vw;
+    line-height: 2;
+    font-size: 1.57692307692vw;
+    font-weight: 800;
 }
 .home .home-sidebar nav {
-    padding-top: 31%;
+    padding-top: 41.51%;
 }
 
 .home main {
     float: right;
-    width: 80%;
+    width: 80.12748406%;
+    margin-bottom: 9%;
 }
 
 .button.go {
@@ -187,25 +196,21 @@ button, .button, a.button {
     padding: 1% 5%;
 }
 
-.home .wrap p {
-    line-height: 1.5;
-}
-
 .home footer {
     clear: both;
     background-color: #FEBF44;
     color: #001D2D;
     font-size: 1vw;
     font-weight: 100;
-    height: 15%;
     font-family: alenbiSans, serif;
+    padding: 1px 0;
 }
 
 .home footer .wrap {
-
-    max-width: 43.2%;
-    margin: 0 20% 0 0;
-    padding-top: 1%;
+    margin-left: 19.87251594%;
+    max-width: 60.9298837645%;
+    margin-top: 2.625%;
+    margin-bottom: 2.4%;
 }
 
 .home footer p {
@@ -214,9 +219,9 @@ button, .button, a.button {
 
 .home footer .footer_icons {
     position: absolute;
-    width: 6%;
-    top: 19%;
-    right: -10%;
+    width: 3.44615384615%;
+    top: 0;
+    right: -6.27715384615%;
 }
 
 /*
@@ -228,7 +233,7 @@ button, .button, a.button {
 }
 
 .home.form form > div {
-    margin: 4% 0;
+    margin-bottom: 4%;
 }
 .home.form main {
     width: 100%;
@@ -237,16 +242,23 @@ button, .button, a.button {
 .home.form main h1 {
     font-size: 2vw;
     padding-bottom: 2%;
+    margin-bottom: 4%;
+}
+
+.home.form form {
+    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
 }
 
 input.city {
     background-color: transparent;
     border: 2px solid #FFF5D9;
     color: #FFF5D9;
-    WIDTH: 50%;
-    height: 2vw;
+    WIDTH: 39%;
+    height: auto;
     border-radius: 7px;
     font-size: 1.5vw;
+    padding: 1% 4%;
+    line-height: 1;
 }
 
 .radio-container {
@@ -266,7 +278,7 @@ input.city {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid;
+    border: 4px solid;
     border-radius: 50%;
 }
 
@@ -283,6 +295,10 @@ input.city {
 .form .buttons span,
 .success-rates .buttons span{
     display: block;
+}
+
+.home.form form div.radio-row {
+    margin-bottom: 7%;
 }
 
 .home .childeren {
@@ -656,6 +672,10 @@ span.participants.amount {
     background-size: contain;
     display: inline-block;
     background-position-x: 50%;
+}
+
+.home.form .button.go {
+    margin-top: 0;
 }
 
 .success-rates .carts .cart {
@@ -1207,6 +1227,16 @@ div#summery {
     height:inherit;
 }
 
+@media (max-width: 1024px) and (min-height: 768px) {
+    .home {
+        height: 100%;
+    }
+    .home footer {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
 @media (max-width: 768px) and (orientation: portrait)  {
     .home .home-header {
         height: 9%;
@@ -1214,9 +1244,6 @@ div#summery {
 
     .home .home-header img.logo {
         width: 13%;
-        position: absolute;
-        bottom: 0;
-        right: 7%;
     }
 
     .home aside.home-sidebar {
@@ -1229,7 +1256,6 @@ div#summery {
         padding-top: 45%;
     }
     .home aside.home-sidebar .sidebar-link {
-        width: 31%;
         display: block;
         margin: 0 auto;
         text-align: center;
@@ -1279,12 +1305,7 @@ div#summery {
     .home.form {
         margin-right: 0;
     }
-    .home .home-header img.logo {
-        width: 10%;
-        position: absolute;
-        bottom: 0;
-        right: 4%;
-    }
+
     .home.form main {
         width: 80%;
     }
@@ -1295,6 +1316,7 @@ div#summery {
     input.city {
         width: 53%;
         height: 4vw;
+        font-size: 3.5vw;
     }
     .ac-container {
         margin-top: 5%;
@@ -1322,6 +1344,9 @@ div#summery {
     .button.go {
         font-size: 4vw;
     }
+    .home.form form div.radio-row {
+        margin: 13% 0;
+    }
 }
 
 @media (max-width: 414px) and (orientation: portrait) {
@@ -1330,6 +1355,11 @@ div#summery {
     }
     .home .home-header {
         height: auto;
+        padding-top: 1px;
+    }
+
+    .home aside.home-sidebar .sidebar-link img {
+        width:100%;
     }
 
     .home .home-header img.logo {
