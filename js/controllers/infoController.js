@@ -2,7 +2,7 @@ angular.module('app').controller('infoController',['$scope','$state','$http', fu
 
     $scope.cities = [{id: 0,name:"bbb"}];
     $scope.dirty = {};
-    $scope.sex = "male";
+    $scope.sex = "zahar";
     $scope.marital = "single";
     $scope.children = 0;
     $scope.city_valid = false;
@@ -75,7 +75,7 @@ angular.module('app').controller('infoController',['$scope','$state','$http', fu
             return;
         }
         $scope.$parent.user = {
-            city: $scope.dirty.city.value,
+            city: $scope.dirty.value,
             children: $scope.children,
             sex: $scope.sex,
             marital: $scope.marital
@@ -83,4 +83,6 @@ angular.module('app').controller('infoController',['$scope','$state','$http', fu
 
         $state.transitionTo('supermarket');
     }
+
+
 }]);
