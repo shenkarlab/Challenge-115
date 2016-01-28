@@ -5,6 +5,7 @@
     <main>
         <div class="wrap">
             <h1>אתגר ה-115<span> הנתונים</span></h1>
+            <h2>הנתונים נאספו מכלל משתתפי האתגר מתחילת פעילותו</h2>
             <div class="stats-section">
                 <div class="stats-sign">
                     <span>הקרוב שהרוב לא הצליחו לעמוד בפניו</span>
@@ -27,7 +28,7 @@
             </div>
             <div class="stats-section">
                 <div class="stats-sign">
-                    <span>המצבע שהרוב לא הצליחו לעמוד בפניו</span>
+                    <span>המבצע שהרוב לא הצליחו לעמוד בפניו</span>
                 </div>
                 <h2>חמשת המוצרים עליהם ויתר הרוב</h2>
                 <div class="products">
@@ -39,7 +40,8 @@
                 <div class="left">
                     <div class="gift">
                         <div>
-                            <span>{{favoriteOffer}}</span>
+                            <h1>{{favoriteOffer.header}}</h1>
+                            <p>{{favoriteOffer.content}}</p>
                         </div>
                     </div>
                 </div>
@@ -102,7 +104,7 @@
                                    mass-autocomplete-item="autocomplete_options">
                         </div>
                     </div>
-                    <div class="filter-column">
+                    <div class="filter-column last">
                         <span class="participants amount">{{carts.length}}</span>
                         <span class="participants">משתתפים</span>
                         <div class="buttons">
@@ -117,7 +119,8 @@
                 <div class="carts">
                     <div class="cart" ng-repeat="item in carts | filter:filters | orderBy:predicate"
                     ng-class="{passed : item.passed ,
-                    failed : !item.passed}">
+                    failed : !item.passed}"
+                        ng-click="openDescription(item)">
                         <div class="avatar" ng-class="{male : item.sex == 'zahar',female : item.sex == 'female'}"></div>
                         <div class="avatar" ng-if="item.marital == 'married'" ng-class="{female : item.sex == 'zahar',male : item.sex == 'female'}"></div>
                         <div class="avatar" ng-repeat="child in childrenRange(item.children)"
@@ -125,8 +128,22 @@
                         <div class="city-label" ng-show="predicate == 'city'">{{item.city}}</div>
                     </div>
                     <div class="clear"></div>
+                    <a  class="button go">שתפו נתונים</a>
                 </div>
             </div>
+
         </div>
     </main>
+    <footer>
+        <div class="wrap">
+            <p>
+                ״אתגר ה-115״ נוצר במעבדת הדאטה ג׳ורנליזם של כלכליסט ושנקר. כל הנתונים לקוחים מכלכליסט, משרד הבריאות - המחלקה לתזונה, המחירים באתגר מעודכנים לפי מחירון ״רמי לוי״ לחודש 12/2015.כל הזכויות לאודיו שמורות לאתר www.freesfx.co.uk עיצוב: ניר ברטוב, שרית כהן ונעמי תירוש, תכנות: ליבנה לנג ודודי לוגסי, תוכן: שאול אמסטרדמסקי, עריכה: אלון רייס, הנחייה אקדמית: מושון זר אביב, יונית רושו
+            </p>
+            <div class="footer_icons">
+                <img src="../images/svg/shenkar_icon.svg">
+                <img src="../images/svg/calcalist_icon.svg">
+            </div>
+        </div>
+
+    </footer>
 </div>

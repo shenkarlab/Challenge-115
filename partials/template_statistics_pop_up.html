@@ -1,0 +1,62 @@
+<div class="popup">
+    <div ng-show="!pressedCart">
+    <div class="popup-title">
+        <h1 ng-if="popupcart.passed"><span class="success">עבר </span>את האתגר</h1>
+        <h1 ng-if="!popupcart.passed"><span class="failed">נכשל </span>באתגר</h1>
+    </div>
+    <div class="popup-content">
+        <table>
+            <tr>
+                <td>פרטים:</td>
+                <td class="detailes">
+                    <span>{{popupdetailes.sex}}</span>
+                    <span>מ{{popupdetailes.city}}</span>,
+                    <span>{{popupdetailes.bought}}</span>
+                    <span>עבור</span>
+                    <span>{{popupdetailes.souls}}</span>,
+                    <span>{{popupdetailes.failedword}}</span>
+                    <span>בניסיון</span>
+                    <span>{{popupdetailes.attempt}}</span>
+                </td>
+            </tr>
+                <tr ng-if="popupdetailes.message">
+                    <td class="right-column">מסר אישי:</td>
+                    <td>{{popupdetailes.message}}</td>
+                </tr>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>חיסכון מהתקציב:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>חיסכון מהתקציב:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>חיסכון מהתקציב:</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div id="show-cart-icon" ng-click="pressedCart = true">
+        <img id="cart-icon" src="../images/svg/cat-round.svg" />
+        <span>הצג סל קניות</span>
+    </div>
+    </div>
+    <div ng-show="pressedCart" class="fullHeight">
+        <h1>סל קניות</h1>
+        <div id="products-cart">
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+        </div>
+    </div>
+</div>

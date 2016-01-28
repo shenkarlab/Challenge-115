@@ -1,10 +1,13 @@
 var app = angular.module('app');
 
-app.controller('statisticsController', ['$scope', '$http', '$state','statsFactory', function ($scope, $http, $state,statsFactory) {
+app.controller('statisticsController', ['$scope', '$http', '$state','statsFactory','$compile', function ($scope, $http, $state,statsFactory, $compile) {
     $scope.favoriteProducts = [];
     $scope.rejectedProducts = [];
     $scope.favoriteRelative = "חבר";
-    $scope.favoriteOffer = "מבצע";
+    $scope.favoriteOffer = {
+        header: "פסטה + שמנת",
+        content: "קנה פסטה קבל חבילת שמנת"
+    };
     $scope.carts = [];
     $scope.cities = [{id: 0,name:"bbb"}];
     $scope.children = -1;
@@ -129,7 +132,7 @@ app.controller('statisticsController', ['$scope', '$http', '$state','statsFactor
     $scope.decrement = function() {
         if ($scope.children >= 0) {
             $scope.children --;
-            if ($scope.children == 0) {
+            if ($scope.children == -1) {
                 $scope.filters.children = "";
             }
             else {
@@ -144,6 +147,116 @@ app.controller('statisticsController', ['$scope', '$http', '$state','statsFactor
             input.push(i);
         }
         return input;
+    };
+
+
+    $scope.pressedCart = false;
+    $scope.openDescription = function(cart) {
+        $http.get('partials/template_statistics_pop_up.html').then(function (response) {
+            if (response.status == 200) {
+                var popupdetailes = {};
+                var souls;
+
+                popupdetailes.sex = cart.sex == "zahar" ? "זכר" : "נקבה" ;
+                popupdetailes.city = cart.city;
+                if (cart.sex == "zahar") {
+                    if (cart.marital == "married") {
+                        popupdetailes.marital = "נשוי";
+                        souls = 2;
+                    }
+                    else if (cart.marital == "divorced") {
+                        popupdetailes.marital = "גרוש";
+                        souls = 1;
+
+                    }
+                    else if (cart.marital == "single") {
+                        popupdetailes.marital = "רווק";
+                        souls = 1;
+
+                    }
+                    popupdetailes.bought = "רכש";
+                    popupdetailes.failedword = "נכשל";
+
+                }
+                else {
+                    if (cart.marital == "married") {
+                        popupdetailes.marital = "נשואה";
+                        souls = 2;
+
+                    }
+                    else if (cart.marital == "divorced") {
+                        popupdetailes.marital = "גרושה";
+                        souls = 1;
+
+                    }
+                    else if (cart.marital == "single") {
+                        popupdetailes.marital = "רווקה";
+                        souls = 1;
+                    }
+                    popupdetailes.bought = "רכשה";
+                    popupdetailes.failedword = "נכשלה";
+
+                }
+
+                souls += cart.children;
+
+                switch (souls) {
+                    case 1:
+                        popupdetailes.souls = "נפש אחת";
+                        break;
+                    case 2:
+                        popupdetailes.souls = "שתי נפשות";
+                        break;
+                    case 3:
+                        popupdetailes.souls = "שלושה נפשות";
+                        break;
+                    case 4:
+                        popupdetailes.souls = "ארבעה נפשות";
+                        break;
+                    case 5:
+                        popupdetailes.souls = "חמישה נפשות";
+                        break;
+                    case 6:
+                        popupdetailes.souls = "שישה נפשות";
+                        break;
+                    case 7:
+                        popupdetailes.souls = "שבעה נפשות";
+                        break;
+                    case 8:
+                        popupdetailes.souls = "שמונה נפשות";
+                        break;
+                    case 9:
+                        popupdetailes.souls = "תשעה נפשות";
+                        break;
+                    case 10:
+                        popupdetailes.souls = "עשרה נפשות";
+                        break;
+                }
+
+                popupdetailes.message = "שמחתי מאוד שהצלחתי להוכיח לעצמי שבלה בלה בהל י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה";
+                $scope.popupdetailes = popupdetailes;
+                var template = angular.element(response.data);
+                var compiledTemplate = $compile(template);
+                compiledTemplate($scope);
+
+                $.fancybox.open(
+                    {
+                        content: template,
+                        type: 'html',
+                        maxWidth: '30%',
+                        helpers: {
+                            overlay: {closeClick: false} // prevents closing when clicking OUTSIDE fancybox
+                        }
+                    },
+                    {
+                        afterClose : function () {
+                            $scope.pressedCart = false;
+                        }
+                    }
+                );
+
+            }
+        });
     }
 
 
