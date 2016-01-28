@@ -79,7 +79,7 @@ angular.module('app').controller('infoController',['$scope','$state','$http', fu
             children: $scope.children,
             sex: $scope.sex,
             marital: $scope.marital
-        }
+        };
 
         $state.transitionTo('supermarket');
     }

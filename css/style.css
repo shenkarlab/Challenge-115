@@ -1,7 +1,7 @@
 /* default resolve */
 html, body, .ng-scope {
     height:100%;
-    width: 3600px;
+    /*width: 3600px;*/
 }
 /* Main super markt div */
 .supermarket_container {

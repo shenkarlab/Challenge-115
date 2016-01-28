@@ -1,4 +1,4 @@
-angular.module('app').controller('marketController',['$scope','$state','productsFactory', function($scope, $state, productsFactory) {
+angular.module('app').controller('marketController',['$rootScope','$scope','$state','productsFactory','smsFactory', function($rootScope,$scope, $state, productsFactory,smsFactory) {
     $scope.greeting = 'Hola!';
     $scope.user.age = 25;
     $scope.user.children = 0;
@@ -10,6 +10,21 @@ angular.module('app').controller('marketController',['$scope','$state','products
 
     /* Globals */
     var counter_element = null;
+
+    var smsArr = [];
+
+    //remove later
+    $scope.$parent.user.marital = "single";
+    $scope.$parent.user.sex = "zahar";
+    $scope.$parent.user.children = 0;
+
+
+    var hasChildren = ($scope.$parent.user.children > 0) && ($scope.$parent.user.marital != "single");
+    smsFactory.getSms($scope.$parent.user.marital,$scope.$parent.user.sex,hasChildren).then(function(succ){
+        smsArr = succ.data;
+        console.log(smsArr);
+    });
+
 
     // init only when DOM is ready
     angular.element(document).ready(function () {
@@ -26,7 +41,6 @@ angular.module('app').controller('marketController',['$scope','$state','products
 
 
     });
-
 
 
 
@@ -50,7 +64,7 @@ angular.module('app').controller('marketController',['$scope','$state','products
             assignProductsEvents();
         });
 
-    }
+    };
 
 
     function addItem(product, product_element) {
