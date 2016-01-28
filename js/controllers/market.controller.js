@@ -6,25 +6,61 @@ angular.module('app').controller('marketController',['$scope','$state','products
     $scope.isles = [];
     $scope.pages = [];
     $scope.pages.push(  {"id":"veg_page", "name": "פירות וירקות"}    );
+    $scope.counter = 0;
+
+    /* Globals */
+    var counter_element = null;
 
     // init only when DOM is ready
     angular.element(document).ready(function () {
         console.log('controller: document is ready');
-        init();
+
+        var svg = document.getElementById('veg_page');
+        svg.addEventListener('load', function()
+        {
+            // Operate upon the SVG DOM here
+            console.log('svg is ready');
+            init();
+            //e.getSVGDocument().querySelector('#some-node').textContent = "New text!";
+        });
+
+
     });
 
 
 
 
-    function init() {
+    var init =  function() {
         productsFactory.initialize().then(function (results) {
             console.log('after factory promise');
             productsFactory.ready = true;
             $scope.isles = results.data;
             console.log('isles are ready');
             // now that were ready, activate Events Function
+
+            var a = document.getElementById("veg_page");
+            // Get the SVG document inside the Object tag
+            var svgDoc = a.contentDocument;
+            // we got all <g> tags
+            var g_groups =  svgDoc.children[0].children;
+            var panel = g_groups['panel'];
+            counter_element = g_groups['panel'].children['shoppingcart'].children['itemscounter'];
+            //counter_element.innerHTML = $scope.counter;
+
             assignProductsEvents();
         });
+
+    }
+
+
+    function addItem(product, product_element) {
+        console.log('hello item');
+        //console.log('product: ' + product.parentElement.id);
+        $scope.cart.items.push(product);
+        $scope.cart.total += parseFloat(product.price);
+        $scope.counter += 1;
+        counter_element.innerHTML = $scope.counter;
+        $(product_element).hide(350);
 
     }
 
@@ -33,7 +69,7 @@ angular.module('app').controller('marketController',['$scope','$state','products
     * 2. Assign event click --> addItem()
     */
     var assignProductsEvents =  function() {
-        var current_product;
+        var current_product = {};
         var g_items = [];
 
         /*
@@ -46,30 +82,33 @@ angular.module('app').controller('marketController',['$scope','$state','products
             var svgDoc = a.contentDocument;
             // we got all <g> tags
             var g_groups =  svgDoc.children[0].children;
+            var isle_num = null, product_num = null;
 
             // Match Between page.name & isles[i]['_id']
             for(var j=0; j< $scope.isles.length; j++) {
                 if($scope.isles[j]['_id'] == $scope.pages[i].name) {
+                    isle_num = j;
                     //console.log('matched: ' + $scope.isles[j]['_id']);
                     var items = $scope.isles[j].items;    // we need every --> items.e_id
                     // iterate over that isle items
                     for(var k=0;k<items.length;k++) {
-                        current_product = items[k]['e_id'];
+                        current_product.num = k;                     // product number in isle
+                        current_product.name = items[k]['e_id']; // product name
                         // relate between (server product.e_id == DOM group of product <g>'s)
                         try {
-                            g_items = g_groups[current_product].children; // specific g products from DOM
+                            g_items = g_groups[current_product.name].children; // specific g products from DOM
                             //console.log('k: ' + k + ' current_product: ' + current_product);
                         }
                         catch(err) {
-                            console.log('k: ' + k + ' current_product: ' + current_product);
+                            console.log('k: ' + k + ' current_product: ' + current_product.name);
                             console.log('dom error');
                             console.log(err);
                             // retry here
                             try {
-                                g_items = g_groups[current_product].children; // specific g products from DOM
+                                g_items = g_groups[current_product.name].children; // specific g products from DOM
                             }
                             catch(e) {
-                                console.log('second time fell | current_product: ' + current_product);
+                                console.log('second time fell | current_product: ' + current_product.name);
                             }
                         }
 
@@ -77,42 +116,26 @@ angular.module('app').controller('marketController',['$scope','$state','products
                         // now we can assign for sure
                         $.each( g_items, function(key, child) {
 
-
                             // enter in if contains product name
-                            if( (child['id'].indexOf(current_product)) >= 0 ) {
+                            if( (child['id'].indexOf(current_product.name)) >= 0 ) {
+                                var temp_item = $scope.isles[isle_num].items[current_product.num];
+
                                 //console.log('child: ' + child.id );
+                                //$(this).attr( "ng-click", "addItem()" );
                                 $(this).css('cursor','pointer');
-                                $(this).click(function() {
-                                    //eggplants_array.push($(this));
-                                    //console.log('last element: ' + eggplants_array[0]);
-                                    $(this).hide(350);
+                                $(this).bind("click", function() {
+                                    /* Assign addItem() Function with isle_number & the item number in isle */
+                                    addItem(temp_item, this);
                                 });
                             }
                         });
                         // empty g_items
                         g_items = [];
                     }
-
-
-
                 }
             }
 
-
-
         }
-
-
-
-    }
-
-    /*
-    * Init Function
-    */
-    var init = function() {
-          // 1. make a call for server side to bring relative data for vegetables page
-         // 2. assign values to each group of products
-        // 3. relate onclick and mouse cursor for each one of them
     }
 
 
