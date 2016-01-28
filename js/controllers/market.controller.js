@@ -6,6 +6,10 @@ angular.module('app').controller('marketController',['$scope','$state','products
     $scope.isles = [];
     $scope.pages = [];
     $scope.pages.push(  {"id":"veg_page", "name": "פירות וירקות"}    );
+    $scope.counter = 0;
+
+    /* Globals */
+    var counter_element = null;
 
     // init only when DOM is ready
     angular.element(document).ready(function () {
@@ -23,8 +27,27 @@ angular.module('app').controller('marketController',['$scope','$state','products
             $scope.isles = results.data;
             console.log('isles are ready');
             // now that were ready, activate Events Function
+
+            var a = document.getElementById("veg_page");
+            // Get the SVG document inside the Object tag
+            var svgDoc = a.contentDocument;
+            // we got all <g> tags
+            var g_groups =  svgDoc.children[0].children;
+            var panel = g_groups['panel'];
+            counter_element = g_groups['panel'].children['shoppingcart'].children['itemscounter'];
+            //counter_element.innerHTML = $scope.counter;
+
             assignProductsEvents();
         });
+
+    }
+
+
+    function addItem(product) {
+        console.log('hello item');
+        $scope.counter += 1;
+        counter_element.innerHTML = $scope.counter;
+        $(product).hide(350);
 
     }
 
@@ -81,30 +104,26 @@ angular.module('app').controller('marketController',['$scope','$state','products
                             // enter in if contains product name
                             if( (child['id'].indexOf(current_product)) >= 0 ) {
                                 //console.log('child: ' + child.id );
+                                //$(this).attr( "ng-click", "addItem()" );
                                 $(this).css('cursor','pointer');
-                                $(this).click(function() {
-                                    //eggplants_array.push($(this));
-                                    //console.log('last element: ' + eggplants_array[0]);
-                                    $(this).hide(350);
+                                $(this).bind("click", function() {
+                                    addItem(this);
                                 });
                             }
                         });
                         // empty g_items
                         g_items = [];
                     }
-
-
-
                 }
             }
 
-
-
         }
-
-
-
     }
+
+    /*
+    * Add item Function
+    */
+
 
     /*
     * Init Function
