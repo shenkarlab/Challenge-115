@@ -1,15 +1,15 @@
 /* default resolve */
 html, body, .ng-scope {
     height:100%;
-    width: 3600px;
+    /*width: 2400px; */
 }
-/* Main super markt div */
+/* Main super market div */
 .supermarket_container {
     position: relative;
     overflow: auto;
     direction: rtl;
 }
-.supermarket_container div {
+.supermarket_container .isle {
     display: inline;
     float:right;
     position: relative;
@@ -20,6 +20,23 @@ html, body, .ng-scope {
     height: inherit;
 }
 
+/*Bottom Panel */
+.shopping_panel {
+    position:fixed;
+    bottom: 0px;
+    width:100%;
+    height: 15%;
+}
+
+.purchase_button {
+    position: absolute;
+    top: 54%;
+    left: 9%;
+}
+.purchase_button a.button {
+    padding: 7px 15px;
+    font-size: initial;
+}
 /*
 #veg_wrapper {
     height :100%;
@@ -1220,15 +1237,9 @@ div#summery {
     font-weight: 700;
 }
 .shopping_cart {
-    background: url('../images/cart.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    width:67px;
-    height:64px;
+    width: 5%;
+    right: 39%;
     position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
     bottom: 16px;
     cursor: pointer;
 }
