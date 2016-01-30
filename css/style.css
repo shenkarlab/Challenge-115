@@ -3,11 +3,19 @@ html, body, .ng-scope {
     height: 100%;
     /*width: 3600px;*/
 }
-
+/* Main super market div */
+.supermarket_container {
+    position: relative;
+}
 .supermarket_container .isle {
     display: inline;
-    float: right;
+    float:right;
     position: relative;
+    height: inherit;
+    width: auto;
+}
+.supermarket_container object {
+    height: inherit;
 }
 
 /*Bottom Panel */
@@ -26,25 +34,6 @@ html, body, .ng-scope {
 .purchase_button a.button {
     padding: 7px 15px;
     font-size: 1.5vw;
-}
-
-/* Main super markt div */
-.supermarket_container {
-    position: relative;
-    overflow: auto;
-    direction: rtl;
-}
-
-.supermarket_container div {
-    display: inline;
-    float: right;
-    position: relative;
-    height: inherit;
-    width: auto;
-}
-
-.supermarket_container object {
-    height: inherit;
 }
 
 /*
@@ -932,6 +921,7 @@ span.failed {
     position: relative;
 }
 
+
 #cart {
     width: 81px;
     height: 60px;
@@ -1077,10 +1067,24 @@ img.passed-sign {
 }
 
 .strikes {
+    display: flex;
+    position: absolute;
+    width: 8%;
+    top: 37%;
+    right: 6%;
+}
+
+#register .strikes {
     display: inline-block;
     position: absolute;
     bottom: 0;
     right: 30px;
+}
+
+.strikes img {
+    float: left;
+    width: 32%;
+    padding-right: 4px;
 }
 
 .strike {
@@ -1589,17 +1593,19 @@ span.bottom-note {
 }
 
 .shopping_cart {
-    background: url('../images/cart.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 67px;
-    height: 64px;
+    width: 5%;
+    right: 42%;
+    top: 30%;
     position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    bottom: 16px;
     cursor: pointer;
+}
+
+.shopping_cart .products_counter {
+    position: absolute;
+    top: 22%;
+    right: 48%;
+    color: #FFFFFF;
+    font-size: 1.5vw;
 }
 
 .cart_lifes {
