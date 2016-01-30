@@ -1,13 +1,79 @@
 <!-- Main SuperMarket Controller -->
 <div class="supermarket_container" ng-show="!finished">
     <!-- vegetables page -->
-    <div id="veg_wrapper">
-        <object id="veg_page" display="block" data="../images/svg/veg_full.svg"></object>
+    <div class="isle" id="veg_wrapper">
+        <object id="veg_page" display="block" data="../images/svg/isles/veg_full.svg"></object>
     </div>
 
     <!-- Dairy page -->
-    <div id="dairy_wrapper">
-        <object id="dairy_page" display="block" data="../images/svg/dairy_page.svg"></object>
+    <div class="isle" id="dairy_wrapper">
+        <object id="dairy_page" display="block" data="../images/svg/isles/dairy_page.svg"></object>
+    </div>
+
+    <!-- Salats page -->
+    <div class="isle" id="salats_wrapper">
+        <object id="salats_page" display="block" data="../images/svg/isles/salats.svg"></object>
+    </div>
+
+    <!-- Cooking page -->
+    <div class="isle" id="cooking_wrapper">
+        <object id="cooking_page" display="block" data="../images/svg/isles/cooking.svg"></object>
+    </div>
+
+    <!-- Preserved And Oils page -->
+    <div class="isle" id="preserved_and_oils_wrapper">
+        <object id="preserved_and_oils_page" display="block" data="../images/svg/isles/preserved_and_oils.svg"></object>
+    </div>
+
+    <!-- Legumes -->
+    <div class="isle" id="legumes_wrapper">
+        <object id="legumes_page" display="block" data="../images/svg/isles/legumes.svg"></object>
+    </div>
+
+    <!-- Meat & Fish -->
+    <div class="isle" id="meat_and_fish_wrapper">
+        <object id="meat_and_fish" display="block" data="../images/svg/isles/meat_and_fish.svg"></object>
+    </div>
+
+    <!-- Frozen -->
+    <div class="isle" id="frozen_wrapper">
+        <object id="frozen" display="block" data="../images/svg/isles/frozen.svg"></object>
+    </div>
+
+    <!-- Breads -->
+    <div class="isle" id="breads_wrapper">
+        <object id="breads" display="block" data="../images/svg/isles/breads.svg"></object>
+    </div>
+
+    <!-- Cereal Snack Spreads -->
+    <div class="isle" id="cerealsnackspreads_wrapper">
+        <object id="cerealsnackspreads" display="block" data="../images/svg/isles/cerealsnackspreads.svg"></object>
+    </div>
+
+    <!-- Beverages -->
+    <div class="isle" id="beverages_wrapper">
+        <object id="beverages" display="block" data="../images/svg/isles/beverages.svg"></object>
+    </div>
+
+
+
+    <!-- Shopping Fixed Panel -->
+    <div class="shopping_panel">
+        <!-- Go To Registry -->
+        <div class="purchase_button">
+            <a class="button">גש לקופה</a>
+        </div>
+        <!-- Shoppping Cart -->
+        <div class="shopping_cart">
+            <img src="../images/svg/cart.svg"/>
+            <span class="products_counter">0</span>
+        </div>
+        <!-- Strikes div -->
+        <div class="strikes">
+            <img src="../images/svg/strike.svg"/>
+            <img src="../images/svg/strike.svg"/>
+            <img src="../images/svg/strike.svg"/>
+        </div>
     </div>
 
     <div style="position: fixed; width: 100px;height: 100px;background-color: red;left: 0" ng-click="goToRegister()">quit</div>

@@ -11,7 +11,7 @@ app.factory('productsFactory', function($http, $q) {
 
         var promise = $http.get('https://ws115.herokuapp.com/group_by_category').success(function (data) {
             prodFactory.isles = data.data;
-            console.log('hey factory ' + data.data);
+            //console.log('hey factory ' + data.data);
         });
 
         return promise;
