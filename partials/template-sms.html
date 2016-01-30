@@ -1,11 +1,12 @@
 <div class="popup">
-    <h1>קיבלת הודעה חדשה</h1>
+    <div>
+    <h1>קיבלת הודעה חדשה<span class="left">11/06/16</span></h1>
     <div class="popup-body">
         <div>
-            <h2>מאת : {{message.sender}}</h2>
-            <p>{{message.content}}</p>
+            <p>{{currMessage.text}}</p>
         </div>
     </div>
-    <a class="button" href="javascript:parent.$.fancybox.close();">התעלם</a>
-    <a ng-click="messageAddedItem(message.item)" class="button" href="javascript:parent.$.fancybox.close();">הוסף לסל הקניות</a>
+    <a ng-click="messageAddedItem(currMessage.itemId)" class="button" href="javascript:parent.$.fancybox.close();">הוסף לסל </a>
+        <div class="clear"></div>
+    </div>
 </div>

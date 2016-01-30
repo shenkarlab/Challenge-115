@@ -5,7 +5,7 @@ app.factory('statsFactory', function($http, $q) {
 
     function getCarts() {
         return ($http.get(url + '/carts')
-            .then(handleSuccess,handleError));
+            .then(handleSuccess, handleError));
     }
 
     function getPopularProducts() {
@@ -17,6 +17,8 @@ app.factory('statsFactory', function($http, $q) {
         return ($http.get(url + '/most_rejected_products')
             .then(handleSuccess, handleError));
     }
+
+
 
     function favoriteRelative() {
         return ($http.get(url + '/favorite_relative')
@@ -47,6 +49,15 @@ app.factory('statsFactory', function($http, $q) {
         return ($http.get(url + '/carts/count/female')
             .then(handleSuccess, handleError));
     }
+
+    function saveCart(cart) {
+
+        return ($http({
+            url: url + '/save_cart',
+            method: "POST",
+            data: cart
+        }).then(handleSuccess,handleError));
+    }
     function handleSuccess(response) {
         return response;
     }
@@ -67,7 +78,8 @@ app.factory('statsFactory', function($http, $q) {
         countFemale:countFemale,
         countMale : countMale,
         countPassed: countPassed,
-        countFailed: countFailed
+        countFailed: countFailed,
+        saveCart: saveCart
     });
 
 });

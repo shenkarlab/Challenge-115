@@ -26,7 +26,7 @@ app.controller('superController', ['$scope', '$http', '$compile', function ($sco
             });
         });
 
-        $scope.openFancyBox = function (url) {
+        $scope.openFancyBox = function (url,_class) {
             $http.get(url).then(function (response) {
                 if (response.status == 200) {
 
@@ -40,6 +40,9 @@ app.controller('superController', ['$scope', '$http', '$compile', function ($sco
                                 closeBtn: false,
                                 helpers: {
                                     overlay: {closeClick: false} // prevents closing when clicking OUTSIDE fancybox
+                                },
+                                beforeLoad: function(){
+                                    $(".fancybox-wrap").addClass(_class);
                                 }
                             }
                     );

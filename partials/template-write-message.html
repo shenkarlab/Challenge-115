@@ -1,0 +1,16 @@
+<div class="popup">
+    <div ng-if="success">
+        <h2>מיד תעבור למסך הנתונים</h2>
+        <h1>תרצה לכתוב כמה מילות סיכום?</h1>
+    </div>
+    <div ng-if="!success">
+        <h2 ng-if="quit">בטוח שתרצה לפרוש?</h2>
+        <h1>כתוב לנו כמה מילות פרידה</h1>
+    </div>
+    <div>
+        <textarea ng-model="userMessage" placeholder="כתוב כאן"></textarea>
+    </div>
+    <div class="buttons">
+        <a ng-click="goToStatistics()" class="button">שלח</a>
+    </div>
+</div>

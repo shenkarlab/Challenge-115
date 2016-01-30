@@ -1,7 +1,16 @@
 <div class="popup">
-<h1>מבצע!</h1>
-<p>{{offer.content}}</p>
-<a class="button" href="javascript:parent.$.fancybox.close();">התעלם</a>
-<a class="button" href="javascript:parent.$.fancybox.close();" ng-click="offerAddedItem(offer.item)">הוסף לסל הקניות</a>
-
+    <div class="gift">
+        <div class="">
+            <h1>{{currentGift.title}}</h1>
+            <p>{{currentGift.text}}</p>
+        </div>
+        <!--<div class="one-half">-->
+            <!--<img src="../images/products/{{currentGift.giftItem[0].name}}.svg" />-->
+            <!--<span ng-if="currentGift.giftItem[1]">+</span>-->
+            <!--<img ng-if="currentGift.giftItem[1]" src="../images/products/{{currentGift.giftItem[1].name}}.svg" />-->
+        <!--</div>-->
+        <div class="clear"></div>
+        <a class="button" ng-click="addGiftToCart()" >הוסף לסל</a>
+        <div class="clear"></div>
+    </div>
 </div>

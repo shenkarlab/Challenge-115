@@ -1,5 +1,5 @@
 <!-- Main SuperMarket Controller -->
-<div class="supermarket_container">
+<div class="supermarket_container" ng-show="!finished">
     <!-- vegetables page -->
     <div class="isle" id="veg_wrapper">
         <object id="veg_page" display="block" data="../images/svg/isles/veg_full.svg"></object>
@@ -74,5 +74,62 @@
             <img src="../images/svg/strike.svg"/>
             <img src="../images/svg/strike.svg"/>
         </div>
+    </div>
+
+    <div style="position: fixed; width: 100px;height: 100px;background-color: red;left: 0" ng-click="goToRegister()">quit</div>
+    <div style="position: fixed; width: 100px;height: 100px;background-color: blue;left: 100px" ng-click="openCart()">סל קניות</div>
+
+
+</div>
+<!-- Register -->
+<div id="register" ng-class="{success: success, failed: !success}" ng-show="finished">
+    <header>
+        <div class="sign"><span>קופה</span></div>
+    </header>
+    <div class="wrap">
+        <main>
+            <h1 ng-if="success" ><span>כל הכבוד.</span> הצלחתם באתגר</h1>
+            <h1 ng-if="!success"><span>אופס.</span> לא הצלחתם באתגר</h1>
+            <div class="content">
+                <div class="table">
+                    <table>
+                        <tr>
+                            <td ng-if="success">חסכתם מהתקציב: </td>
+                            <td ng-if="!success">חרגתם מהתקציב ב: </td>
+                            <td class="overall">₪{{diff| currency : ""}}</td>
+                        </tr>
+                        <tr>
+                            <td>רכשתם מוצרים בסך: </td>
+                            <td>₪{{cart.total}}</td>
+                        </tr>
+                        <tr>
+                            <td class="left-column">לרשותכם עמד תקציב של:</td>
+                            <td>₪{{budget}}</td>
+                        </tr>
+                    </table>
+                    <div class="bottom-text">
+                        <span>התקציב עבור </span>
+                        <span> {{souls}} </span>
+                        <span>בחישוב של ₪115 לאדם</span>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a ng-if="success" ng-click="finish(false)" class="button">גשו לנתונים</a>
+                    <a ng-if="!success && (strikes == 3)" ng-click="finish(false)" class="button">גשו לנתונים</a>
+                    <a class="button" ng-click="tryAgain()" ng-if="!success && (strikes < 3)">ניסיון נוסף</a>
+                    <a class="button" ng-if="!success && (strikes < 3)" ng-click="finish(true)">רוצה לפרוש</a>
+                </div>
+                <div class="register-image">
+                    <img src="../images/svg/register.svg">
+                    <img class="passed-sign" ng-if="success" src="../images/svg/passedd-sign.svg">
+                    <img class="passed-sign" ng-if="!success" src="../images/svg/failed-sign.svg">
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="strikes">
+        <div class="strike" ng-class="{'strike-out' : strikes >= 1}"></div>
+        <div class="strike" ng-class="{'strike-out' : strikes >= 2}"></div>
+        <div class="strike" ng-class="{'strike-out' : strikes >= 3}"></div>
     </div>
 </div>
