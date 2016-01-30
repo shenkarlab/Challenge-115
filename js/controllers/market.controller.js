@@ -5,8 +5,19 @@ angular.module('app').controller('marketController',['$rootScope','$scope','$sta
     $scope.category = "פירות וירקות";
     $scope.isles = [];
     $scope.pages = [];
-    $scope.pages.push(  {"id":"veg_page", "name": "פירות וירקות"}    );
+    $scope.pages.push(  {"id":"veg_page", "name": "פירות וירקות"},
+        {"id":"dairy_page", "name": "חלב, ביצים וסלטים"},
+        {"id":"salats_page", "name": "סלטים"},
+        {"id":"cooking_page", "name": "בישול ואפייה"},
+        {"id":"preserved_and_oils_page", "name": "שימורים ושמנים"},
+        {"id":"legumes_page", "name": "קטניות"},
+        {"id":"meat_and_fish", "name": "בשר ודגים"},
+        {"id":"frozen", "name": "קפואים"},
+        {"id":"breads", "name": "לחם ומאפים"},
+        {"id":"cerealsnackspreads", "name": "חטיפים,דגנים וממרחים"},
+        {"id":"beverages", "name": "משקאות"});
     $scope.counter = 0;
+    var htmlCounter = null;
 
     /* Globals */
     var counter_element = null;
@@ -25,55 +36,107 @@ angular.module('app').controller('marketController',['$rootScope','$scope','$sta
         console.log(smsArr);
     });
 
-
-    // init only when DOM is ready
-    angular.element(document).ready(function () {
-        console.log('controller: document is ready');
-
-        var svg = document.getElementById('veg_page');
-        svg.addEventListener('load', function()
-        {
-            // Operate upon the SVG DOM here
-            console.log('svg is ready');
-            init();
-            //e.getSVGDocument().querySelector('#some-node').textContent = "New text!";
-        });
-
-
-    });
-
-
-
+    /*
+    * Get Products From Products Factory
+     */
     var init =  function() {
         productsFactory.initialize().then(function (results) {
             console.log('after factory promise');
             productsFactory.ready = true;
             $scope.isles = results.data;
-            console.log('isles are ready');
+            console.log('2. Data Isles are ready');
+
+            assignProductsEvents(); // need to assign with specific attributes
             // now that were ready, activate Events Function
-
-            var a = document.getElementById("veg_page");
-            // Get the SVG document inside the Object tag
-            var svgDoc = a.contentDocument;
-            // we got all <g> tags
-            var g_groups =  svgDoc.children[0].children;
-            var panel = g_groups['panel'];
-            counter_element = g_groups['panel'].children['shoppingcart'].children['itemscounter'];
-            //counter_element.innerHTML = $scope.counter;
-
-            assignProductsEvents();
+            //assignProductsEvents();
         });
-
     };
 
 
+    /*
+    * Calculate all isles width
+     */
+    var calculateWidth = function() {
+        var width = null;
+        var supermarket_isles = $('.supermarket_container .isle');
+        $.each( supermarket_isles, function(key, isle) {
+            width += isle.offsetWidth;
+        });
+        return width;
+    }
+
+    /*
+     * Check For Mobile Compatibility
+     */
+    var detectMobileHeight = function() {
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.ng-scope').css( "overflow-y","hidden");
+        }
+    }
+
+
+
+
+
+    // init only when DOM is ready
+    angular.element(document).ready(function () {
+        console.log('controller: document is ready, Initalize Started');
+        console.log('------------------------------------------------');
+
+
+
+
+        /* Iterate each page and assign onload svg function */
+        var c_page = null; // current page
+        var c_name = null;
+        var loaded = 0;
+        //load_page(loaded);
+
+        // 1. init data
+
+        for(var i=0; i<$scope.pages.length; i++) {
+            c_page = document.getElementById($scope.pages[i].id);
+            c_name = $scope.pages[i].name;
+            c_page.addEventListener('load', function(c_name) {
+                console.log(c_name + ' was loaded: ');
+                loaded ++;
+
+                if(loaded == $scope.pages.length) {
+                    console.log('1. All SVG Isles Are Loaded');
+                    var w = calculateWidth();
+                    $('.supermarket_container').width(calculateWidth());
+                    $('body').removeProp("margin");
+
+                    detectMobileHeight();
+                    //$('.ng-scope').css( "overflow-y","hidden");
+
+                    htmlCounter = $('.products_counter')[0];
+                    //htmlCounter.innerHTML = "0";     overflow-y: hidden; .css( "color", "green" )
+
+                    //document.getElementsByTagName("html")[0].setAttribute("style", "overflow-y: hidden;");
+                    //$('.supermarket_container').animate({ scrollLeft:w}, "fast");
+                    init();
+                }
+            });
+        }
+    });
+
+
+
+
+
+    /*
+    * Add Another Item To The Cart Function
+     */
     function addItem(product, product_element) {
-        console.log('hello item');
+        //console.log('hello item: ' + product.e_id);
         //console.log('product: ' + product.parentElement.id);
         $scope.cart.items.push(product);
         $scope.cart.total += parseFloat(product.price);
-        $scope.counter += 1;
-        counter_element.innerHTML = $scope.counter;
+        $scope.counter ++;
+        //console.log('counter: ' + $scope.counter);
+        htmlCounter.innerHTML = $scope.counter.toString();
+        //counter_element.innerHTML = $scope.counter;
         $(product_element).hide(350);
 
     }
@@ -91,7 +154,7 @@ angular.module('app').controller('marketController',['$rootScope','$scope','$sta
          */
         for(var i =0; i<$scope.pages.length; i++) {
             // 1. iterate over every svg page
-            var a = document.getElementById("veg_page");
+            var a = document.getElementById($scope.pages[i].id);
             // Get the SVG document inside the Object tag
             var svgDoc = a.contentDocument;
             // we got all <g> tags
