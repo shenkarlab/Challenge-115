@@ -35,15 +35,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
             })
 
-            .state('statistics.sex', {
-                templateUrl: 'partials/partial-statistics.chart.html',
-                controller: 'chartController'
-            })
-
-            .state('statistics.age', {
-                templateUrl: 'partials/partial-statistics.chart.html',
-                controller: 'chartController'
-            });
 });
 
 app.controller('mainController', function ($scope) {

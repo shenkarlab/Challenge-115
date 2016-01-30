@@ -1,10 +1,14 @@
-app.factory('smsFactory', function($http, $q) {
-
+app.factory('giftsFactory', function($http, $q) {
     var url = '//ws115.herokuapp.com';
 
-    function getSms(status,sex,children) {
-        return ($http.get(url + '/sms?status=' + status + '&sex=' + sex + '&children=' + children)
-            .then(handleSuccess,handleError));
+    function getGifts() {
+        return ($http.get(url + '/gifts')
+            .then(handleSuccess, handleError));
+    }
+
+    function getGift(id) {
+        return ($http.get(url + '/gift?id=' + id)
+            .then(handleSuccess, handleError));
     }
 
     function handleSuccess(response) {
@@ -19,7 +23,7 @@ app.factory('smsFactory', function($http, $q) {
     }
 
     return({
-        getSms : getSms
+        getGift: getGift,
+        getGifts: getGifts
     });
-
 });
