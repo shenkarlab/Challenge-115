@@ -10,8 +10,19 @@ angular.module('app').controller('marketController',
             $scope.category = "פירות וירקות";
             $scope.isles = [];
             $scope.pages = [];
-            $scope.pages.push({"id": "veg_page", "name": "פירות וירקות"});
+            $scope.pages.push(  {"id":"veg_page", "name": "פירות וירקות"},
+                {"id":"dairy_page", "name": "חלב, ביצים וסלטים"},
+                {"id":"salats_page", "name": "סלטים"},
+                {"id":"cooking_page", "name": "בישול ואפייה"},
+                {"id":"preserved_and_oils_page", "name": "שימורים ושמנים"},
+                {"id":"legumes_page", "name": "קטניות"},
+                {"id":"meat_and_fish", "name": "בשר ודגים"},
+                {"id":"frozen", "name": "קפואים"},
+                {"id":"breads", "name": "לחם ומאפים"},
+                {"id":"cerealsnackspreads", "name": "חטיפים,דגנים וממרחים"},
+                {"id":"beverages", "name": "משקאות"});
             $scope.counter = 0;
+            var htmlCounter = null;
 
             $scope.giftTrigger = [];
             $scope.popupGifts = [];
@@ -161,19 +172,72 @@ angular.module('app').controller('marketController',
                 $scope.openFancyBox('partials/template-cart.html', 'cart',300);
             };
 
+            /*
+             * Calculate all isles width
+             */
+            var calculateWidth = function() {
+                var width = null;
+                var supermarket_isles = $('.supermarket_container .isle');
+                $.each( supermarket_isles, function(key, isle) {
+                    width += isle.offsetWidth;
+                });
+                return width;
+            }
+
+            /*
+             * Check For Mobile Compatibility
+             */
+            var detectMobileHeight = function() {
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                    $('.ng-scope').css( "overflow-y","hidden");
+                }
+            }
+
+
+
+
+
             // init only when DOM is ready
             angular.element(document).ready(function () {
-                console.log('controller: document is ready');
-
-                var svg = document.getElementById('veg_page');
-                svg.addEventListener('load', function () {
-                    // Operate upon the SVG DOM here
-                    console.log('svg is ready');
-                    init();
-                    //e.getSVGDocument().querySelector('#some-node').textContent = "New text!";
-                });
+                console.log('controller: document is ready, Initalize Started');
+                console.log('------------------------------------------------');
 
 
+
+
+                /* Iterate each page and assign onload svg function */
+                var c_page = null; // current page
+                var c_name = null;
+                var loaded = 0;
+                //load_page(loaded);
+
+                // 1. init data
+
+                for(var i=0; i<$scope.pages.length; i++) {
+                    c_page = document.getElementById($scope.pages[i].id);
+                    c_name = $scope.pages[i].name;
+                    c_page.addEventListener('load', function(c_name) {
+                        console.log(c_name + ' was loaded: ');
+                        loaded ++;
+
+                        if(loaded == $scope.pages.length) {
+                            console.log('1. All SVG Isles Are Loaded');
+                            var w = calculateWidth();
+                            $('.supermarket_container').width(calculateWidth());
+                            $('body').removeProp("margin");
+
+                            detectMobileHeight();
+                            //$('.ng-scope').css( "overflow-y","hidden");
+
+                            htmlCounter = $('.products_counter')[0];
+                            //htmlCounter.innerHTML = "0";     overflow-y: hidden; .css( "color", "green" )
+
+                            //document.getElementsByTagName("html")[0].setAttribute("style", "overflow-y: hidden;");
+                            //$('.supermarket_container').animate({ scrollLeft:w}, "fast");
+                            init();
+                        }
+                    });
+                }
             });
 
 
@@ -200,13 +264,19 @@ angular.module('app').controller('marketController',
             };
 
 
+
+            /*
+             * Add Another Item To The Cart Function
+             */
             function addItem(product, product_element) {
-                console.log('hello item');
+                //console.log('hello item: ' + product.e_id);
                 //console.log('product: ' + product.parentElement.id);
                 $scope.cart.items.push(product);
                 $scope.cart.total += parseFloat(product.price);
-                $scope.counter += 1;
-                counter_element.innerHTML = $scope.counter;
+                $scope.counter ++;
+                //console.log('counter: ' + $scope.counter);
+                htmlCounter.innerHTML = $scope.counter.toString();
+                //counter_element.innerHTML = $scope.counter;
                 $(product_element).hide(350);
 
                 for (var i = 0; i < $scope.giftTrigger; i++) {
@@ -217,6 +287,8 @@ angular.module('app').controller('marketController',
                 }
 
             }
+
+
 
             $scope.goToRegister = function () {
                 $scope.finished = true;
@@ -273,30 +345,30 @@ angular.module('app').controller('marketController',
              * 1. Assign Cursor: Pointer to every product
              * 2. Assign event click --> addItem()
              */
-            var assignProductsEvents = function () {
+            var assignProductsEvents =  function() {
                 var current_product = {};
                 var g_items = [];
 
                 /*
                  * for every svg page
                  */
-                for (var i = 0; i < $scope.pages.length; i++) {
+                for(var i =0; i<$scope.pages.length; i++) {
                     // 1. iterate over every svg page
-                    var a = document.getElementById("veg_page");
+                    var a = document.getElementById($scope.pages[i].id);
                     // Get the SVG document inside the Object tag
                     var svgDoc = a.contentDocument;
                     // we got all <g> tags
-                    var g_groups = svgDoc.children[0].children;
+                    var g_groups =  svgDoc.children[0].children;
                     var isle_num = null, product_num = null;
 
                     // Match Between page.name & isles[i]['_id']
-                    for (var j = 0; j < $scope.isles.length; j++) {
-                        if ($scope.isles[j]['_id'] == $scope.pages[i].name) {
+                    for(var j=0; j< $scope.isles.length; j++) {
+                        if($scope.isles[j]['_id'] == $scope.pages[i].name) {
                             isle_num = j;
                             //console.log('matched: ' + $scope.isles[j]['_id']);
                             var items = $scope.isles[j].items;    // we need every --> items.e_id
                             // iterate over that isle items
-                            for (var k = 0; k < items.length; k++) {
+                            for(var k=0;k<items.length;k++) {
                                 current_product.num = k;                     // product number in isle
                                 current_product.name = items[k]['e_id']; // product name
                                 // relate between (server product.e_id == DOM group of product <g>'s)
@@ -304,7 +376,7 @@ angular.module('app').controller('marketController',
                                     g_items = g_groups[current_product.name].children; // specific g products from DOM
                                     //console.log('k: ' + k + ' current_product: ' + current_product);
                                 }
-                                catch (err) {
+                                catch(err) {
                                     console.log('k: ' + k + ' current_product: ' + current_product.name);
                                     console.log('dom error');
                                     console.log(err);
@@ -312,23 +384,23 @@ angular.module('app').controller('marketController',
                                     try {
                                         g_items = g_groups[current_product.name].children; // specific g products from DOM
                                     }
-                                    catch (e) {
+                                    catch(e) {
                                         console.log('second time fell | current_product: ' + current_product.name);
                                     }
                                 }
 
 
                                 // now we can assign for sure
-                                $.each(g_items, function (key, child) {
+                                $.each( g_items, function(key, child) {
 
                                     // enter in if contains product name
-                                    if ((child['id'].indexOf(current_product.name)) >= 0) {
+                                    if( (child['id'].indexOf(current_product.name)) >= 0 ) {
                                         var temp_item = $scope.isles[isle_num].items[current_product.num];
 
                                         //console.log('child: ' + child.id );
                                         //$(this).attr( "ng-click", "addItem()" );
-                                        $(this).css('cursor', 'pointer');
-                                        $(this).bind("click", function () {
+                                        $(this).css('cursor','pointer');
+                                        $(this).bind("click", function() {
                                             /* Assign addItem() Function with isle_number & the item number in isle */
                                             addItem(temp_item, this);
                                         });
