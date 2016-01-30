@@ -1248,6 +1248,13 @@ div#products-cart {
 .popup h1 span.left{
     float: left;
 }
+.cart .popup h1 {
+    font-size: 20px;
+}
+
+.cart .popup h1 span.left {
+    color: #febf44;
+}
 
 .popup .button {
     float: left;

@@ -54,6 +54,7 @@ angular.module('app').controller('marketController',
                                 maxHeight: height,
                                 minWidth: '40%',
                                 maxWidth: '40%',
+                                openEffect:'elastic',
                                 helpers: {
                                     overlay: {closeClick: false} // prevents closing when clicking OUTSIDE fancybox
                                 },
