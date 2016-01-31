@@ -8,6 +8,12 @@ html, body, .ng-scope {
     position: relative;
     width: 10823px;
 }
+
+.supermarket_container.hide {
+    width: 100% !important;
+    overflow: hidden;
+}
+
 .supermarket_container .isle {
     float:right;
     position: relative;
@@ -1732,7 +1738,13 @@ span.bottom-note {
 }
 
 @media (max-width: 1280px) {
+    .wrap {
+        max-width: 1200px;
+    }
 
+    .home main {
+        width: 750px;
+    }
 }
 
 @media (max-width: 1024px) and (min-height: 768px) {
@@ -1750,7 +1762,7 @@ span.bottom-note {
     }
 }
 
-@media (max-width: 768px) and (orientation: portrait) {
+@media (max-width: 1024px) {
     .home .home-header {
         height: 9%;
     }
@@ -1808,8 +1820,6 @@ span.bottom-note {
     .home footer {
         font-size: 2vw;
         height: 15%;
-        position: fixed;
-        bottom: 0;
     }
 
     #statistics-page footer {
@@ -1826,8 +1836,12 @@ span.bottom-note {
     .home footer .footer_icons {
         position: absolute;
         width: 6%;
-        top: 19%;
+        top: 30%;
         right: -10%;
+    }
+
+    .home footer p {
+        margin-right: 0;
     }
 
     /**
