@@ -406,6 +406,7 @@ angular.module('app').controller('marketController',
                 //cart.ansewredSMS
                 //cart.rejectedProducts
                 cart.answeredOffer = answeredOffer;
+                cart.budget = $scope.budget;
 
                 statsFactory.saveCart(cart).then(function (respone) {
                     $.fancybox.close();

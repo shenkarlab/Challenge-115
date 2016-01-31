@@ -26,6 +26,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="clear"></div>
             </div>
             <div class="stats-section">
                 <div class="stats-sign">
@@ -46,11 +47,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="clear"></div>
+
             </div>
             <div class="success-rates">
                 <h1>שיעורי ההצלחה של האתגר</h1>
                 <div>
-                    <div class="filter-column">
+                    <div class="filter-column success-column">
                         <h2>הצלחה</h2>
                         <div class="row" ng-class="{checked : filters.passed === true}">
                             <div class="square success" ng-click="toggleSuccess('passed')"></div>
@@ -70,7 +73,7 @@
 
                         </div>
                     </div>
-                    <div class="filter-column">
+                    <div class="filter-column sex-column">
                         <h2>מין</h2>
                         <div class="row" ng-class="{checked : filters.sex == 'zahar'}">
                             <div class="square face male" ng-click="toggleSex('male')"></div>
@@ -90,7 +93,7 @@
 
                         </div>
                     </div>
-                    <div class="filter-column">
+                    <div class="filter-column children-column">
                         <h2>מספר ילדים</h2>
                         <div class="childeren">
                             <img src="../images/svg/girl.svg"/>
@@ -99,7 +102,7 @@
                                     ng-click="decrement()">-</span></div>
                         </div>
                     </div>
-                    <div class="filter-column">
+                    <div class="filter-column city-column">
                         <h2>עיר</h2>
                         <div mass-autocomplete>
                             <input class="city" ng-blur="check_city()" ng-model="filters.city"
