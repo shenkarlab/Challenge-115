@@ -49,7 +49,18 @@ angular.module('app').controller('marketController',
             var smsArr = [];
 
 
+            /*
+             * Set Scroll To The Right
+             */
+            var redirectToRight = function() {
+                var leftPos = $('body').scrollLeft();
+                $('body').animate({scrollLeft: leftPos + 10823}, 0.001);
+            }
+
+
             $scope.openFancyBox = function (url, _class,height) {
+
+
                 $http.get(url).then(function (response) {
                     if (response.status == 200) {
 
@@ -57,6 +68,7 @@ angular.module('app').controller('marketController',
                         var compiledTemplate = $compile(template);
                         compiledTemplate($scope);
 
+                        //redirectToRight();
                         $.fancybox.open(
                             {
                                 content: template,
@@ -65,6 +77,7 @@ angular.module('app').controller('marketController',
                                 maxHeight: height,
                                 minWidth: '40%',
                                 maxWidth: '40%',
+                                openEffect:'elastic',
                                 helpers: {
                                     overlay: {closeClick: false} // prevents closing when clicking OUTSIDE fancybox
                                 },
@@ -76,6 +89,7 @@ angular.module('app').controller('marketController',
                                 }
                             }
                         );
+
                     }
                 });
             };
@@ -194,10 +208,9 @@ angular.module('app').controller('marketController',
             }
 
 
-
-
-
-            // init only when DOM is ready
+            /*
+             * DOM Ready Trigger
+             */
             angular.element(document).ready(function () {
                 console.log('controller: document is ready, Initalize Started');
                 console.log('------------------------------------------------');
@@ -222,9 +235,16 @@ angular.module('app').controller('marketController',
 
                         if(loaded == $scope.pages.length) {
                             console.log('1. All SVG Isles Are Loaded');
-                            var w = calculateWidth();
-                            $('.supermarket_container').width(calculateWidth());
-                            $('body').removeProp("margin");
+                            /*var w  = calculateWidth();*/
+                            var leftPos = $('body').scrollLeft();
+                            $('body').animate({scrollLeft: leftPos + 10823}, 0.001);
+
+                            //$('.supermarket_container').width(calculateWidth());
+                            //$('body').removeProp("margin");
+
+
+
+
 
                             detectMobileHeight();
                             //$('.ng-scope').css( "overflow-y","hidden");

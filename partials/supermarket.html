@@ -1,5 +1,5 @@
 <!-- Main SuperMarket Controller -->
-<div class="supermarket_container" ng-show="!finished">
+<div class="supermarket_container" ng-class="{'hide': !finished}">
     <!-- vegetables page -->
     <div class="isle" id="veg_wrapper">
         <object id="veg_page" display="block" data="../images/svg/isles/veg_full.svg"></object>
@@ -61,24 +61,20 @@
     <div class="shopping_panel">
         <!-- Go To Registry -->
         <div class="purchase_button">
-            <a class="button">גש לקופה</a>
+            <a ng-click="goToRegister()" class="button">גש לקופה</a>
         </div>
         <!-- Shoppping Cart -->
-        <div class="shopping_cart">
+        <div ng-click="openCart()" class="shopping_cart">
             <img src="../images/svg/cart.svg"/>
             <span class="products_counter">0</span>
         </div>
         <!-- Strikes div -->
         <div class="strikes">
-            <img src="../images/svg/strike.svg"/>
-            <img src="../images/svg/strike.svg"/>
-            <img src="../images/svg/strike.svg"/>
+            <div class="strike_p" ng-class="{'strike-out' : strikes >= 1}"></div>
+            <div class="strike_p" ng-class="{'strike-out' : strikes >= 2}"></div>
+            <div class="strike_p" ng-class="{'strike-out' : strikes >= 3}"></div>
         </div>
     </div>
-
-    <div style="position: fixed; width: 100px;height: 100px;background-color: red;left: 0" ng-click="goToRegister()">quit</div>
-    <div style="position: fixed; width: 100px;height: 100px;background-color: blue;left: 100px" ng-click="openCart()">סל קניות</div>
-
 
 </div>
 <!-- Register -->
