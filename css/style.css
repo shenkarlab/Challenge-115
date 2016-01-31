@@ -325,18 +325,18 @@ button, .button, a.button {
 }
 
 .home.form form > div {
-    margin-bottom: 4%;
+    margin-bottom: 30px;
 }
 
 .home.form main {
-    width: 100%;
-    margin-right: 20%;
+    margin-right: 260px;
 }
 
 .home.form main h1 {
-    font-size: 2vw;
-    padding-bottom: 2%;
-    margin-bottom: 4%;
+    font-size: 28px;
+    padding-bottom: 22px;
+    margin-bottom: 35px;
+    line-height: 36px;
 }
 
 .home.form form {
@@ -345,24 +345,31 @@ button, .button, a.button {
 
 input.city {
     background-color: transparent;
-    border: 2px solid #FFF5D9;
+    border: 3px solid #FFF5D9;
     color: #FFF5D9;
-    WIDTH: 39%;
-    height: auto;
+    WIDTH: 300px;
+    height: 40px;
     border-radius: 7px;
-    font-size: 1.5vw;
-    padding: 1% 4%;
-    line-height: 1;
+    font-size: 20px;
+    line-height: 36px;
+    padding: 0;
 }
 
 .radio-container {
-    width: 8%;
+    width: 68px;
     text-align: center;
     display: inline-block;
     height: 0;
-    padding-top: 8%;
+    padding-top: 50px;
     position: relative;
-    margin-left: 5%;
+    margin-left: 25px;
+}
+
+label.form-label {
+    font-size: 17px;
+    line-height: 36px;
+    font-family: mekomi;
+    font-weight: 900;
 }
 
 .radio-container .radio {
@@ -370,9 +377,9 @@ input.city {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    border: 4px solid;
+    width: 68px;
+    height: 68px;
+    border: 3px solid;
     border-radius: 50%;
 }
 
@@ -383,8 +390,9 @@ input.city {
 }
 
 .radio-container label {
-    margin-top: 15%;
+    margin-top: 0;
     display: block;
+
 }
 
 .form .buttons span,
@@ -393,19 +401,20 @@ input.city {
 }
 
 .home.form form div.radio-row {
-    margin-bottom: 7%;
+    margin-bottom: 75px;
 }
 
 .home .childeren {
-    width: 6%;
+    width: 45px;
     position: relative;
 }
 
 .home .childeren .buttons {
     position: absolute;
-    left: -60%;
-    top: 30%;
-    font-size: 2vw;
+    left: -30px;
+    top: 25px;
+    font-size: 30px;
+    line-height: 20px;
 }
 
 .home .childeren .buttons span {
@@ -418,10 +427,11 @@ input.city {
 
 .home .childeren span.amount {
     position: absolute;
-    top: 4%;
-    right: 13%;
+    top: 0;
+    right: 6px;
     color: #001D2D;
-    font-size: 1.5vw;
+    font-size: 15px;
+    line-height: 21px;
 }
 
 .radio-container label.click {
@@ -458,19 +468,34 @@ div[mass-autocomplete] {
 }
 
 ::-webkit-input-placeholder {
-    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+    font-family: 'mekomi', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 800;
 }
 
 :-ms-input-placeholder {
-    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+    font-family: 'mekomi', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 800;
+
 }
 
 ::-moz-placeholder {
-    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+    font-family: 'mekomi', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 800;
+
 }
 
 ::-moz-placeholder {
-    font-family: 'AlenbiSans', Arial, Helvetica, sans-serif;
+    font-family: 'mekomi', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 800;
+
 }
 
 .ac-container {
@@ -488,7 +513,7 @@ div[mass-autocomplete] {
     top: 0 !important;
     right: 0;
     color: #000;
-    margin-top: 5%;
+    margin-top: 46px;
 }
 
 .ac-container .ac-menu {
@@ -1853,53 +1878,13 @@ span.bottom-note {
 
     .home.form main {
         width: 80%;
+        margin: 0 auto;
+        float: none;
     }
 
-    .home.form main h1 {
-        font-size: 4vw;
-    }
-
-    input.city {
-        width: 53%;
-        height: 4vw;
-        font-size: 3.5vw;
-    }
-
-    .ac-container {
-        margin-top: 5%;
-    }
-
-    .radio-container {
-        width: 15%;
-        padding-top: 15%;
-    }
-
-    .home.form .childeren {
-        width: 10%;
-    }
-
-    .home.form .childeren .buttons {
-        left: -75%;
-        top: 19%;
-        font-size: 5vw;
-    }
-
-    .home.form .childeren span.amount {
-        top: 3%;
-        right: 13%;
-        font-size: 3.5vw;
-    }
-
-    .home.form form {
-        font-size: 3vw;
-    }
 
     .button.go {
         font-size: 4vw;
-    }
-
-    .home.form form div.radio-row {
-        margin: 13% 0;
     }
 
     #statistics-page main {
@@ -2026,41 +2011,5 @@ span.bottom-note {
         height: 100%;
     }
 
-    .home.form .home-header {
-        height: auto;
-        margin-bottom: 4%;
-    }
-
-    .home.form main {
-        width: 100%;
-        margin: 0;
-    }
-
-    .home.form form {
-        font-size: 4vw;
-    }
-
-    .home.form main h1 {
-        font-size: 5vw;
-    }
-
-    .radio-container {
-        width: 19%;
-        padding-top: 19%;
-        margin-left: 10%;
-    }
-
-    .home.form form > div {
-        margin: 6% 0;
-    }
-
-    input.city {
-        width: 44%;
-        height: 5vw;
-    }
-
-    .ac-container {
-        margin-top: 8%;
-    }
 
 }
