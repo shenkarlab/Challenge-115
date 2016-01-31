@@ -244,6 +244,8 @@ app.controller('statisticsController', ['$scope', '$http', '$state','statsFactor
 
                 popupdetailes.products = cart.products;
                 popupdetailes.message = cart.message;
+                popupdetailes.total = cart.total;
+                popupdetailes.budget = cart.budget;
                 $scope.popupdetailes = popupdetailes;
                 var template = angular.element(response.data);
                 var compiledTemplate = $compile(template);
