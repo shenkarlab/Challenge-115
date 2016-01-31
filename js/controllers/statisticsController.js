@@ -1,13 +1,11 @@
 var app = angular.module('app');
 
-app.controller('statisticsController', ['$scope', '$http', '$state','statsFactory','$compile', function ($scope, $http, $state,statsFactory, $compile) {
+app.controller('statisticsController', ['$scope', '$http', '$state','statsFactory','$compile','giftsFactory', function ($scope, $http, $state,statsFactory, $compile, giftsFactory) {
     $scope.favoriteProducts = [];
     $scope.rejectedProducts = [];
-    $scope.favoriteRelative = "חבר";
-    $scope.favoriteOffer = {
-        header: "פסטה + שמנת",
-        content: "קנה פסטה קבל חבילת שמנת"
-    };
+
+    $scope.favoriteOffer = {};
+
     $scope.carts = [];
     $scope.cities = [{id: 0,name:"bbb"}];
     $scope.children = -1;
@@ -54,6 +52,17 @@ app.controller('statisticsController', ['$scope', '$http', '$state','statsFactor
     statsFactory.getMostRejectedProducts().then(function(succ){
         $scope.rejectedProducts = succ.data.slice(0,5);
     });
+
+    statsFactory.favoriteOffer().then(function(succ){
+        giftsFactory.getGift(succ.data[0]._id).then(function(offer_data){
+            $scope.favoriteOffer = offer_data.data[0];
+        });
+    });
+
+    statsFactory.favoriteRelative().then(function(succ){
+        $scope.favoriteRelative = succ.data[0]._id;
+    });
+
 
     statsFactory.getCarts().then(function(succ){
         $scope.carts = succ.data;
@@ -233,6 +242,7 @@ app.controller('statisticsController', ['$scope', '$http', '$state','statsFactor
                         break;
                 }
 
+                popupdetailes.products = cart.products;
                 popupdetailes.message = "שמחתי מאוד שהצלחתי להוכיח לעצמי שבלה בלה בהל י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה";
                 $scope.popupdetailes = popupdetailes;
                 var template = angular.element(response.data);

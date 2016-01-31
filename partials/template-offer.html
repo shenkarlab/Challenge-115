@@ -1,16 +1,23 @@
 <div class="popup">
     <div class="gift">
-        <div class="">
-            <h1>{{currentGift.title}}</h1>
-            <p>{{currentGift.text}}</p>
+        <div class="inner">
+            <div class="left-top-label">קופון מיוחד</div>
+            <div ng-if="!currentGift.gift" class="right-bottom-label">50%</div>
+            <div ng-if="currentGift.gift" class="right-bottom-label">קופון מתנה</div>
+            <div class="one-half first">
+                <h1>{{currentGift.title}}</h1>
+                <p>{{currentGift.text}}</p>
+            </div>
+            <div class="one-half">
+                <!--<img src=""/>-->
+                <!--<span ng-if="currentGift.giftItem[1]">+</span>-->
+                <!--<img ng-if="currentGift.giftItem[1]" src="../images/products/{{currentGift.giftItem[1].name}}.svg"/>-->
+                <img src="../images/gifts/{{currentGift.image}}.svg">
+            </div>
+            <div class="clear"></div>
+            <a class="button" ng-click="addGiftToCart()">הוסף לסל</a>
+            <div class="clear"></div>
         </div>
-        <!--<div class="one-half">-->
-            <!--<img src="../images/products/{{currentGift.giftItem[0].name}}.svg" />-->
-            <!--<span ng-if="currentGift.giftItem[1]">+</span>-->
-            <!--<img ng-if="currentGift.giftItem[1]" src="../images/products/{{currentGift.giftItem[1].name}}.svg" />-->
-        <!--</div>-->
-        <div class="clear"></div>
-        <a class="button" ng-click="addGiftToCart()" >הוסף לסל</a>
-        <div class="clear"></div>
     </div>
+
 </div>

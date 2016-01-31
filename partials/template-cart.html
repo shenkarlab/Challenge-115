@@ -2,8 +2,8 @@
     <h1>סל קניות<span class="left">{{cart.items.length}} מוצרים</span></h1>
     <div class="items">
         <h2 ng-hide="cart.items.length">אין פריטים בעגלה</h2>
-        <div class="cart-item" ng-repeat="item in cart.items track by $index" ng-click="">
-            <object display="block" data="../images/products/{{item.name}}.svg"></object>
+        <div class="cart-item" ng-repeat="item in cart.items track by $index" ng-click="removeItem($index)">
+            <img src="../images/products/{{item.name}}.svg" />
             <a class="button">הסר</a>
         </div>
     </div>

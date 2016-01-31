@@ -25,6 +25,7 @@ angular.module('app').controller('marketController',
             var htmlCounter = null;
 
             $scope.giftTrigger = [];
+
             $scope.popupGifts = [];
             $scope.currentGift = {};
 
@@ -47,6 +48,26 @@ angular.module('app').controller('marketController',
             var counter_element = null;
 
             var smsArr = [];
+
+            /*
+             * Set Scroll To The Right
+             */
+            var redirectToRight = function() {
+                var leftPos = $('body').scrollLeft();
+                $('body').animate({scrollLeft: leftPos + 10823}, 0.001);
+            };
+
+
+            function getItemByName(name){
+                for (var i = 0 ; i < $scope.isles.length ; i++) {
+                    for (var j = 0; j < $scope.isles[i].items.length ; j++) {
+                        if (name === $scope.isles[i].items[j].name) {
+                            return $scope.isles[i].items[j];
+                        }
+                    }
+                }
+                return null;
+            }
 
 
             $scope.openFancyBox = function (url, _class,height) {
@@ -73,7 +94,7 @@ angular.module('app').controller('marketController',
                                     $(".fancybox-wrap").addClass(_class);
                                 },
                                 afterClose: function () {
-                                    modalOpen = !!modalOpen;
+                                    modalOpen = false;
                                 }
                             }
                         );
@@ -98,13 +119,6 @@ angular.module('app').controller('marketController',
             });
 
             /**
-             * every minute send sms
-             */
-            setInterval(function () {
-                showSMS();
-            }, 60000);
-
-            /**
              * open sms modal
              */
             function showSMS() {
@@ -119,32 +133,25 @@ angular.module('app').controller('marketController',
                 }
             }
 
-            $scope.messageAddedItem = function (products) {
-                for (var i = 0; i < ids.length; i++) {
-                    addItem(products[i], "");
+
+            $scope.messageAddedItem = function () {
+                for (var i = 0; i < $scope.currMessage.itemId.length; i++) {
+                    item = getItemByName($scope.currMessage.itemId[i]);
+                    if (item) {
+                        addItem(item, "");
+                    }
                 }
-                $scope.answeredSMS.push(currMessage);
+                $scope.answeredSMS.push($scope.currMessage);
             };
 
             /**
              * get gifts from DB
              */
             giftsFactory.getGifts().then(function (succ) {
-                $scope.giftTrigger = succ.data[0].items;
-                $scope.popupGifts = succ.data[1].items;
+                $scope.popupGifts = succ.data[0].items;
+                $scope.giftTrigger = succ.data[1].items;
             });
 
-            /**
-             * popup gift every minute
-             */
-            setInterval(function () {
-                if (modalOpen) {
-                    return;
-                }
-                var i = getRandomIntInclusive(0,$scope.popupGifts.length - 1);
-                $scope.currentGift = $scope.popupGifts[i];
-                showGift();
-            }, 60000);
 
             function showGift() {
                 if (modalOpen) {
@@ -153,19 +160,43 @@ angular.module('app').controller('marketController',
                 modalOpen = true;
 
                 var giftClass = $scope.currentGift.gift ? " gift " : "";
-                giftClass += " offer ";
+                giftClass += " super offer ";
                 $scope.openFancyBox('partials/template-offer.html', giftClass);
             }
 
             $scope.addGiftToCart = function () {
-                for (var i = 0; i < $scope.currentGift.giftItem; i++) {
-                    $scope.cart.items.push($scope.currentGift.giftItem[i].name);
-                    //$scope.cart.total += parseFloat();
+                for (var i = 0; i < $scope.currentGift.giftItem.length; i++) {
+                    item = getItemByName($scope.currentGift.giftItem[i].name);
+                    $scope.cart.items.push(item);
+                    $scope.cart.total += parseFloat(item.price * (100/$scope.currentGift.giftItem[i].name ));
                     $scope.counter += 1;
+                    htmlCounter.innerHTML = $scope.counter.toString();
                 }
                 answeredOffer.push($scope.currentGift.id);
+                $.fancybox.close();
 
             };
+
+            /**
+             * popup every minute
+             */
+            var popupToggle = true;
+            setInterval(function () {
+                if (modalOpen || $scope.finished) {
+                    return;
+                }
+
+                if (popupToggle) {
+                    var i = getRandomIntInclusive(0,$scope.popupGifts.length - 1);
+                    $scope.currentGift = $scope.popupGifts[i];
+                    showGift();
+                }
+                else {
+                    showSMS();
+                }
+                popupToggle = !popupToggle;
+
+            }, 60000);
 
 
             $scope.openCart = function(){
@@ -183,7 +214,7 @@ angular.module('app').controller('marketController',
                     width += isle.offsetWidth;
                 });
                 return width;
-            }
+            };
 
             /*
              * Check For Mobile Compatibility
@@ -192,13 +223,12 @@ angular.module('app').controller('marketController',
                 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                     $('.ng-scope').css( "overflow-y","hidden");
                 }
-            }
+            };
 
 
-
-
-
-            // init only when DOM is ready
+            /*
+             * DOM Ready Trigger
+             */
             angular.element(document).ready(function () {
                 console.log('controller: document is ready, Initalize Started');
                 console.log('------------------------------------------------');
@@ -223,9 +253,16 @@ angular.module('app').controller('marketController',
 
                         if(loaded == $scope.pages.length) {
                             console.log('1. All SVG Isles Are Loaded');
-                            var w = calculateWidth();
-                            $('.supermarket_container').width(calculateWidth());
-                            $('body').removeProp("margin");
+                            /*var w  = calculateWidth();*/
+                            var leftPos = $('body').scrollLeft();
+                            $('body').animate({scrollLeft: leftPos + 10823}, 0.001);
+
+                            //$('.supermarket_container').width(calculateWidth());
+                            //$('body').removeProp("margin");
+
+
+
+
 
                             detectMobileHeight();
                             //$('.ng-scope').css( "overflow-y","hidden");
@@ -280,7 +317,7 @@ angular.module('app').controller('marketController',
                 //counter_element.innerHTML = $scope.counter;
                 $(product_element).hide(350);
 
-                for (var i = 0; i < $scope.giftTrigger; i++) {
+                for (var i = 0; i < $scope.giftTrigger.length; i++) {
                     if ($scope.giftTrigger[i].triggerItem == product.name) {
                         $scope.currentGift = $scope.giftTrigger[i];
                         showGift();
@@ -288,6 +325,15 @@ angular.module('app').controller('marketController',
                 }
 
             }
+
+
+            $scope.removeItem = function(i) {
+                var item = $scope.cart.items[i];
+                $scope.cart.items.splice(i,1);
+                $scope.cart.total -= parseFloat(item.price);
+                $scope.counter --;
+                htmlCounter.innerHTML = $scope.counter.toString();
+            };
 
 
 
@@ -320,7 +366,9 @@ angular.module('app').controller('marketController',
                     items: []
                 };
                 for (var i = 0; i < $scope.cart.items.length; i++) {
-                    cart.items.push($scope.cart[i].name);
+                    if (name in $scope.cart[i] ) {
+                        cart.items.push($scope.cart[i].name);
+                    }
                 }
                 cart.passed = $scope.success;
                 cart.quit = $scope.quit;
@@ -414,7 +462,7 @@ angular.module('app').controller('marketController',
                     }
 
                 }
-            }
+            };
 
             function getRandomIntInclusive(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;

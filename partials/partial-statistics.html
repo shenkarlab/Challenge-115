@@ -13,7 +13,7 @@
                 <h2>חמשת המוצרים הכי פופולריים</h2>
                 <div class="products">
                 <div class="product-container" ng-repeat="product in favoriteProducts">
-                    <img ng-src="images/products/{{product._id}}.png">
+                    <img ng-src="images/products/{{product._id}}.svg">
                     <label>{{product._id}}</label>
                 </div>
                     </div>
@@ -33,15 +33,15 @@
                 <h2>חמשת המוצרים עליהם ויתר הרוב</h2>
                 <div class="products">
                 <div class="product-container" ng-repeat="product in rejectedProducts">
-                    <img ng-src="images/products/{{product._id}}.png">
+                    <img ng-src="images/products/{{product._id}}.svg">
                     <label>{{product._id}}</label>
                 </div>
                     </div>
                 <div class="left">
                     <div class="gift">
                         <div>
-                            <h1>{{favoriteOffer.header}}</h1>
-                            <p>{{favoriteOffer.content}}</p>
+                            <h1>{{favoriteOffer.title}}</h1>
+                            <p>{{favoriteOffer.text}}</p>
                         </div>
                     </div>
                 </div>

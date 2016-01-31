@@ -48,15 +48,7 @@
     <div ng-show="pressedCart" class="fullHeight">
         <h1>סל קניות</h1>
         <div id="products-cart">
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
-            <img id="cart-icon" src="../images/svg/cat-round.svg" />
+            <img ng-repeat="item in popupdetailes.products track by $index" src="../images/products/{{item}}.svg" />
         </div>
     </div>
 </div>

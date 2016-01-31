@@ -1,5 +1,5 @@
 <!-- Main SuperMarket Controller -->
-<div class="supermarket_container" ng-show="!finished">
+<div class="supermarket_container" ng-class="{hide : finished}">
     <!-- vegetables page -->
     <div class="isle" id="veg_wrapper">
         <object id="veg_page" display="block" data="../images/svg/isles/veg_full.svg"></object>
@@ -70,9 +70,9 @@
         </div>
         <!-- Strikes div -->
         <div class="strikes">
-            <img src="../images/svg/strike.svg"/>
-            <img src="../images/svg/strike.svg"/>
-            <img src="../images/svg/strike.svg"/>
+            <div class="strike_p" ng-class="{'strike-out' : strikes >= 1}"></div>
+            <div class="strike_p" ng-class="{'strike-out' : strikes >= 2}"></div>
+            <div class="strike_p" ng-class="{'strike-out' : strikes >= 3}"></div>
         </div>
     </div>
 
