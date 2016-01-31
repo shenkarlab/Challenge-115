@@ -15,8 +15,6 @@
                     <span>עבור</span>
                     <span>{{popupdetailes.souls}}</span>,
                     <span>{{popupdetailes.failedword}}</span>
-                    <span>בניסיון</span>
-                    <span>{{popupdetailes.attempt}}</span>
                 </td>
             </tr>
                 <tr ng-if="popupdetailes.message">
@@ -27,16 +25,17 @@
         </table>
         <table>
             <tr>
-                <td>חיסכון מהתקציב:</td>
-                <td></td>
+                <td ng-if="popupcart.passed" >חיסכון בתקציב</td>
+                <td ng-if="!popupcart.passed" >חרג מהתקציב</td>
+                <td class="amount-label">₪{{popupdetailes.budget - popupdetailes.total}}</td>
             </tr>
             <tr>
-                <td>חיסכון מהתקציב:</td>
-                <td></td>
+                <td>רכישת מוצרים בסך: </td>
+                <td>₪{{popupdetailes.total}}</td>
             </tr>
             <tr>
-                <td>חיסכון מהתקציב:</td>
-                <td></td>
+                <td>לרשותם עמד: </td>
+                <td>₪{{popupdetailes.budget}}</td>
             </tr>
         </table>
     </div>
