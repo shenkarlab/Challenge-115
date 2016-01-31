@@ -165,7 +165,7 @@ angular.module('app').controller('marketController',
                 for (var i = 0; i < $scope.currentGift.giftItem.length; i++) {
                     item = getItemByName($scope.currentGift.giftItem[i].name);
                     $scope.cart.items.push(item);
-                    $scope.cart.total += parseFloat(item.price * (100/$scope.currentGift.giftItem[i].name ));
+                    //$scope.cart.total += parseFloat(item.price * (100/$scope.currentGift.giftItem[i].name ));
                     $scope.counter += 1;
                     htmlCounter.innerHTML = $scope.counter.toString();
                 }
