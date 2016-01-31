@@ -1477,6 +1477,7 @@ span.bottom-note {
     top: 47px;
     font-family: alenbiSerif;
     height:auto;
+    display: none;
 }
 .right-bottom-label {
     position: absolute;
