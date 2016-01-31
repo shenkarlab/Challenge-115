@@ -103,11 +103,7 @@ angular.module('app').controller('marketController',
                 });
             };
 
-            //remove later
-            $scope.$parent.user.marital = "single";
-            $scope.$parent.user.sex = "zahar";
-            $scope.$parent.user.children = 0;
-            $scope.budget = 115;
+
 
             /**
              * get the sms from the db according to user
@@ -197,7 +193,7 @@ angular.module('app').controller('marketController',
                 }
                 popupToggle = !popupToggle;
 
-            }, 60000);
+            }, 30000);
 
 
             $scope.openCart = function(){
@@ -308,6 +304,11 @@ angular.module('app').controller('marketController',
                     //counter_element.innerHTML = $scope.counter;
 
                     assignProductsEvents();
+
+                    $(".supermarket_container").mousewheel(function (event, delta) {
+                        this.scrollLeft -= (delta * 5);
+                        event.preventDefault();
+                    });
                 });
 
             };

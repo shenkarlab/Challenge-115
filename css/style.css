@@ -1911,7 +1911,7 @@ span.bottom-note {
 
 }
 
-@media (max-width: 414px) and (orientation: portrait) {
+@media (max-width: 414px) {
     .home {
         height: auto;
     }

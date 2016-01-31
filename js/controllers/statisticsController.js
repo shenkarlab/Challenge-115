@@ -243,7 +243,7 @@ app.controller('statisticsController', ['$scope', '$http', '$state','statsFactor
                 }
 
                 popupdetailes.products = cart.products;
-                popupdetailes.message = "שמחתי מאוד שהצלחתי להוכיח לעצמי שבלה בלה בהל י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה י שבלה בלה בה";
+                popupdetailes.message = cart.message;
                 $scope.popupdetailes = popupdetailes;
                 var template = angular.element(response.data);
                 var compiledTemplate = $compile(template);
