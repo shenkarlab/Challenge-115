@@ -54,7 +54,7 @@ angular.module('app').controller('marketController',
              */
             var redirectToRight = function() {
                 var leftPos = $('body').scrollLeft();
-                $('body').animate({scrollLeft: leftPos + 10823}, 0.001);
+                $('body').animate({scrollLeft: leftPos + calculateWidth()}, 0.001);
             };
 
 
@@ -71,6 +71,7 @@ angular.module('app').controller('marketController',
 
 
             $scope.openFancyBox = function (url, _class,height) {
+                // Gets template url
                 $http.get(url).then(function (response) {
                     if (response.status == 200) {
 
@@ -254,10 +255,20 @@ angular.module('app').controller('marketController',
                         if(loaded == $scope.pages.length) {
                             console.log('1. All SVG Isles Are Loaded');
                             /*var w  = calculateWidth();*/
-                            var leftPos = $('body').scrollLeft();
-                            $('body').animate({scrollLeft: leftPos + 10823}, 0.001);
 
-                            //$('.supermarket_container').width(calculateWidth());
+
+                            $('.supermarket_container').width(calculateWidth());
+
+                            /*var leftPos = $('body').scrollLeft();
+                            $('body').animate({scrollLeft: leftPos + calculateWidth()}, 0.001);*/
+
+                            redirectToRight();
+
+                            //$('.supermarket_container').css( "cursor","none");
+                            //$('.supermarket_container').css("position","relative");
+                            /*$('.supermarket_container').removeProp("position");
+                            $('.supermarket_container').animate().css("position","relative");*/
+                            //$('.supermarket_container').css( "position","relative");
                             //$('body').removeProp("margin");
 
 
@@ -352,8 +363,20 @@ angular.module('app').controller('marketController',
                 }
             };
 
+            /*
+            * Try Again Function
+             */
             $scope.tryAgain = function () {
                 $scope.finished = false;
+                redirectToRight();
+
+
+                // Recognize Libra Test
+                /*if($scope.answeredSMS.length >=2) {
+                    modalOpen = true;
+                    $scope.openFancyBox('partials/template-libra-test.html', 'libra');
+
+                }*/
             };
 
             $scope.finish = function (quit) {
@@ -366,8 +389,8 @@ angular.module('app').controller('marketController',
                     items: []
                 };
                 for (var i = 0; i < $scope.cart.items.length; i++) {
-                    if (name in $scope.cart[i] ) {
-                        cart.items.push($scope.cart[i].name);
+                    if ("name" in $scope.cart.items[i] ) {
+                        cart.items.push($scope.cart.items[i].name);
                     }
                 }
                 cart.passed = $scope.success;
